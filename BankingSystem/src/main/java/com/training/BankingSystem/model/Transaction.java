@@ -27,7 +27,7 @@ public class Transaction {
 		this.accountId = accountId;
 		this.ammount = ammount;
 		this.transactionType = transactionType;
-	}
+	} 
 	public Transaction() {
 		super();
 	}

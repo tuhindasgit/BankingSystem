@@ -18,7 +18,7 @@ public class BankServiceImpl implements BankService {
 	@Override
 	public Bank createBank(Bank bank) {
 
-		if (bank.getAmmount().intValue() < 0) {
+		if (bank.getAmount().intValue()<0) {
 			throw new MyException("invalid input,provide valid ammount");
 		} else {
 			return bankRepo.save(bank);

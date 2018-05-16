@@ -19,7 +19,7 @@ public class CustomerServiceImpl implements CustomerServicee{
 	BankRepo bankRepo;
 	
 	@Override
-	public Customer createCustomer(Customer customer) {
+	public Customer createCustomer(Customer customer) throws MyException {
 		Integer id=customer.getBankId();
 		Optional<Bank> bank=bankRepo.findById(id);
 		if (bank.isPresent()) {

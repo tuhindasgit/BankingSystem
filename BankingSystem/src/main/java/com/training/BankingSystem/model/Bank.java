@@ -20,7 +20,7 @@ public class Bank {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer bankId;
-	private BigDecimal ammount;
+	private BigDecimal amount;
 	
 	@OneToMany(targetEntity=Customer.class,mappedBy="bankId")
 	private List<Customer> bankCustomerList = new ArrayList<>();
@@ -31,9 +31,9 @@ public class Bank {
 	@OneToMany(targetEntity=Account.class,mappedBy="bankId")
 	private List<Account> bankAccountList=new ArrayList<>();
 	
-	public Bank( BigDecimal ammount) {
+	public Bank( BigDecimal amount) {
 		super();
-		this.ammount = ammount;
+		this.amount = amount;
 	}
 
 public Bank() {
