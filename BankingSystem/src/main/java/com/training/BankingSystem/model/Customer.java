@@ -24,6 +24,10 @@ public class Customer {
 	private Integer bankId;
 	@OneToMany(targetEntity=Account.class,mappedBy="customerId")
 	private List<ATM> customerAccountList=new ArrayList<>();
+	
+	@OneToMany(targetEntity=Transaction.class,mappedBy="customerId")
+	private List<Transaction> transactionList=new ArrayList<>();
+	
 	public Customer(Integer customerId, String name, Integer pin, Integer bankId) {
 		super();
 		this.customerId = customerId;

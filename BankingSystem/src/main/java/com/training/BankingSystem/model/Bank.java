@@ -23,13 +23,13 @@ public class Bank {
 	private BigDecimal ammount;
 	
 	@OneToMany(targetEntity=Customer.class,mappedBy="bankId")
-	private List<Customer> customerList = new ArrayList<>();
+	private List<Customer> bankCustomerList = new ArrayList<>();
 	
 	@OneToMany(targetEntity=ATM.class,mappedBy="bankId")
-	private List<ATM> atmList=new ArrayList<>();
+	private List<ATM> bankAtmList=new ArrayList<>();
 	
 	@OneToMany(targetEntity=Account.class,mappedBy="bankId")
-	private List<ATM> accountBankList=new ArrayList<>();
+	private List<ATM> bankAccountList=new ArrayList<>();
 	
 	public Bank(Integer bankId, BigDecimal ammount) {
 		super();
