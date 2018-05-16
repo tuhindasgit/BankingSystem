@@ -45,7 +45,7 @@ public class AtmServiceImpl implements AtmService {
 			Bank bank2=bank1.get();
 				if(deposit.intValue() < bank2.getAmount().intValue())
 				{
-					BigDecimal atmAmmount=new BigDecimal(atm1.get().getAmmount().intValue()-deposit.intValue());
+					BigDecimal atmAmmount=new BigDecimal(atm1.get().getAmmount().intValue()+deposit.intValue());
 					atm1.get().setAmmount(atmAmmount);
 					atmRepo.save(atm1.get());
 					BigDecimal bankAmmount=new BigDecimal(bank2.getAmount().intValue()-deposit.intValue());
