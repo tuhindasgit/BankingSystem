@@ -29,12 +29,15 @@ public class Bank {
 	private List<ATM> bankAtmList=new ArrayList<>();
 	
 	@OneToMany(targetEntity=Account.class,mappedBy="bankId")
-	private List<ATM> bankAccountList=new ArrayList<>();
+	private List<Account> bankAccountList=new ArrayList<>();
 	
-	public Bank(Integer bankId, BigDecimal ammount) {
+	public Bank( BigDecimal ammount) {
 		super();
-		this.bankId = bankId;
 		this.ammount = ammount;
 	}
+
+public Bank() {
+	super();
+}
 
 }

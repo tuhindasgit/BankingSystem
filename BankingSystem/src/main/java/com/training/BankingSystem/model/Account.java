@@ -26,7 +26,6 @@ public class Account {
 	
 	public Account(Integer accountId, Integer customerId, Integer bankId, BigDecimal ammount) {
 		super();
-		this.accountId = accountId;
 		this.customerId = customerId;
 		this.bankId = bankId;
 		this.ammount = ammount;

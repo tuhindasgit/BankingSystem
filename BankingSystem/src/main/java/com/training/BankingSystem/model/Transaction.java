@@ -19,10 +19,10 @@ public class Transaction {
 	private Integer accountId;
 	private BigDecimal ammount;
 	private String transactionType;
+	
 	public Transaction(Integer transactionId, Integer customerId, Integer accountId, BigDecimal ammount,
 			String transactionType) {
 		super();
-		this.transactionId = transactionId;
 		this.customerId = customerId;
 		this.accountId = accountId;
 		this.ammount = ammount;
