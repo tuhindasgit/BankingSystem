@@ -24,7 +24,7 @@ public class Account {
 	@OneToMany(targetEntity=Transaction.class,mappedBy="accountId")
 	private List<Transaction> accountTransactionList=new ArrayList<>();
 	
-	public Account(Integer accountId, Integer customerId, Integer bankId, BigDecimal ammount) {
+	public Account(Integer customerId, Integer bankId, BigDecimal ammount) {
 		super();
 		this.customerId = customerId;
 		this.bankId = bankId;

@@ -21,8 +21,7 @@ public class BankServiceImpl implements BankService {
 		if (bank.getAmmount().intValue() < 0) {
 			throw new MyException("invalid input,provide valid ammount");
 		} else {
-			Bank bank1 = bankRepo.save(bank);
-			return bank1;
+			return bankRepo.save(bank);
 		}
 	}
 
@@ -32,9 +31,8 @@ public class BankServiceImpl implements BankService {
 		Optional<Bank> bank = bankRepo.findById(bankId);
 		if(bank.isPresent())
 		{
-		bankRepo.getOne(bankId);
-		Bank bank2 = bank.get();
-		return bank2;
+		
+		return bank.get();
 		}
 		else
 		{

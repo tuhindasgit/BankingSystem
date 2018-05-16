@@ -16,7 +16,7 @@ public class ATM {
 	private Integer ATMId;
 	private BigDecimal ammount;
 	private Integer bankId;
-	public ATM(Integer aTMId, BigDecimal ammount, Integer bankId) {
+	public ATM(BigDecimal ammount, Integer bankId) {
 		super();
 		this.ammount = ammount;
 		this.bankId = bankId;
