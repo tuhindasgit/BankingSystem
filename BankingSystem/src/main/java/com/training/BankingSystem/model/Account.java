@@ -12,6 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import lombok.Data;
+/*
+ * @Tuhin Das
+ * Account Entity class
+ */
 @Entity
 @Data
 public class Account {
@@ -24,7 +28,9 @@ public class Account {
 
 	@OneToMany(targetEntity=Transaction.class,mappedBy="accountId")
 	private List<Transaction> accountTransactionList=new ArrayList<>();
-	
+	/*
+	 * parameterized constructor
+	 */
 	public Account(Integer customerId, Integer bankId, BigDecimal ammount) {
 		super();
 		this.customerId = customerId;

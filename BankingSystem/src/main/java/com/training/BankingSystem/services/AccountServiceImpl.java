@@ -30,6 +30,8 @@ public class AccountServiceImpl implements AccountService {
 	CustomerRepo custRepo;
 	@Autowired
 	AtmRepo atmRepo;
+	@Autowired
+	TransactionService transervice;
 
 	@Override
 	public Account createAccount(Account account) {
@@ -83,6 +85,7 @@ public class AccountServiceImpl implements AccountService {
 						BigDecimal bankAmmount = bank1.getAmount().subtract(withdrawl);
 						bank1.setAmount(bankAmmount);
 						bankRepo.save(bank1);
+						transervice.createTransaction(acnt1, "Debit");
 
 					} else {
 						throw new MyException("you are trying to withdraw invalid ammount");
@@ -106,6 +109,7 @@ public class AccountServiceImpl implements AccountService {
 						BigDecimal accountMoney = acnt1.getAmmount().subtract(withdrawl);
 						acnt1.setAmmount(accountMoney);
 						accountRepo.save(acnt1);
+						transervice.createTransaction(acnt1, "Debit");
 
 					} else {
 						throw new MyException("awkat ki bahar");
@@ -147,6 +151,7 @@ public class AccountServiceImpl implements AccountService {
 				BigDecimal bankAmmount = bank2.getAmount().add(deposit);
 				bank2.setAmount(bankAmmount);
 				bankRepo.save(bank2);
+				transervice.createTransaction(acnt2, "Credit");
 				return acnt2;
 
 			} else {
