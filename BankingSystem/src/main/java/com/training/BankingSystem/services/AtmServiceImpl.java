@@ -34,6 +34,10 @@ public class AtmServiceImpl implements AtmService {
 			throw new MyException("provide valid bank id ...bank id not present");
 			}
 		}
+	/*
+	 * (non-Javadoc)
+	 * @see com.training.BankingSystem.services.AtmService#addMoneyFromBank(java.math.BigDecimal, java.lang.Integer)
+	 */
 	@Override
 	public ATM addMoneyFromBank(BigDecimal deposit, Integer atmId) {
 	
@@ -45,11 +49,9 @@ public class AtmServiceImpl implements AtmService {
 			Bank bank2=bank1.get();
 				if(deposit.intValue() < bank2.getAmount().intValue())
 				{
-					BigDecimal atmAmmount=new BigDecimal(atm1.get().getAmmount().intValue()+deposit.intValue());
-					atm1.get().setAmmount(atmAmmount);
+					atm1.get().setAmmount(atm1.get().getAmmount().add(deposit));
 					atmRepo.save(atm1.get());
-					BigDecimal bankAmmount=new BigDecimal(bank2.getAmount().intValue()-deposit.intValue());
-					bank2.setAmount(bankAmmount);
+					bank2.setAmount(bank2.getAmount().subtract(deposit));
 					bankRepo.save(bank2);
 					return atm1.get();
 				}

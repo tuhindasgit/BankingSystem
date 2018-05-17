@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import lombok.Data;
 @Entity
@@ -20,7 +21,7 @@ public class Account {
 	private Integer customerId;
 	private Integer bankId;
 	private BigDecimal ammount;
-	
+
 	@OneToMany(targetEntity=Transaction.class,mappedBy="accountId")
 	private List<Transaction> accountTransactionList=new ArrayList<>();
 	

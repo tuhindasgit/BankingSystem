@@ -37,7 +37,7 @@ public class AtmController {
 	}
 		
 		@RequestMapping(value = "/depositfrombank/{Deposit}/{atmId}", method = RequestMethod.GET)
-		public ResponseEntity<?> addAtm(@PathVariable BigDecimal Deposit,
+		public ResponseEntity<?> depositFromBank(@PathVariable BigDecimal Deposit,
 										@PathVariable Integer atmId
 											)
 		{	
