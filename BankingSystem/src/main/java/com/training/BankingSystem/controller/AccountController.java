@@ -42,11 +42,12 @@ public class AccountController {
 
 	}
 
-	@RequestMapping(value = "/withdrawammount/{withdraw}/{accountId}", method = RequestMethod.GET)
-	public ResponseEntity<?> withdrawFromBank(@PathVariable BigDecimal withdraw, @PathVariable Integer accountId) {
+	@RequestMapping(value = "/withdrawammount/{withdraw}/{accountId}/{select}/{atmID}", method = RequestMethod.GET)
+	public ResponseEntity<?> withdrawFromBank(@PathVariable BigDecimal withdraw, @PathVariable Integer accountId,
+			@PathVariable String select, @PathVariable Integer atmID) {
 		try {
-			Account account2 = acountservice.withdrawMoney(withdraw, accountId);
-			return new ResponseEntity<Account>(account2, HttpStatus.CREATED);
+			 acountservice.withdrawMoney(withdraw, accountId,select,atmID);
+			return new ResponseEntity<String>("Money withdrawn",HttpStatus.CREATED);
 		} catch (MyException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
 		}
@@ -63,5 +64,6 @@ public class AccountController {
 		}
 
 	}
+	
 
 }

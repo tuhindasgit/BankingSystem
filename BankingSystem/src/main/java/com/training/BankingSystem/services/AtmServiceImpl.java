@@ -82,41 +82,9 @@ public class AtmServiceImpl implements AtmService {
 		}
 		
 	}
+}
 	
-	@Override
-	public ATM withdrawAmmount(BigDecimal withdrawl, Integer atmId,Integer accountId) {
-		Optional<ATM> atm1=atmRepo.findById(atmId);
-		Optional<Account> account1=accountRepo.findById(accountId);
-		if(atm1.isPresent() && account1.isPresent())
-		{
-			
-			ATM atm2=atm1.get();
-			Account account=account1.get();
-				if(withdrawl.intValue() < account.getAmmount().intValue())
-				{
-					BigDecimal atmMoney=atm2.getAmmount().subtract(withdrawl);
-					atm2.setAmmount(atmMoney);
-					atmRepo.save(atm2);
-				
-					BigDecimal accountMoney=account.getAmmount().subtract(withdrawl);
-					account.setAmmount(accountMoney);
-					accountRepo.save(account);
-					
-					return atm2;
-				}
-				else
-				{
-					throw new MyException("awkat ki bahar");
-				}
-			}
-		
-		else
-		{
-			throw new MyException("Atm with this Id is not presentor atm is not mapped with this account");
-		}
-	}
-
-	}
+	
 
 	
 

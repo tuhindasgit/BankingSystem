@@ -53,20 +53,5 @@ public class AtmController {
 		
 	}
 		
-		@RequestMapping(value = "/withdrawfromatm/{withdrawl}/{atmId}/{accountId}", method = RequestMethod.GET)
-		public ResponseEntity<?> depositFromBank(@PathVariable BigDecimal withdrawl,@PathVariable Integer atmId,
-										@PathVariable Integer accountId
-											)
-		{	
-			try
-			{
-				ATM atm1=atmservice.withdrawAmmount(withdrawl, atmId, accountId);
-				return new ResponseEntity<ATM>(atm1,HttpStatus.CREATED);
-			}
-			catch(MyException e)
-			{
-				return new ResponseEntity<String>(e.toString(),HttpStatus.BAD_REQUEST);
-			}
-		
-	}
+	
 }
