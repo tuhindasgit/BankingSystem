@@ -8,15 +8,20 @@ import org.springframework.stereotype.Service;
 import com.training.BankingSystem.exception.MyException;
 import com.training.BankingSystem.model.Bank;
 import com.training.BankingSystem.repository.BankRepo;
-
+/*
+ * Service class for bank service Implementation
+ */
 @Service
 public class BankServiceImpl implements BankService {
 
 	@Autowired
 	BankRepo bankRepo;
-
+/*
+ * (non-Javadoc)
+ * @see com.training.BankingSystem.services.BankService#createBank(com.training.BankingSystem.model.Bank)
+ */
 	@Override
-	public Bank createBank(Bank bank) {
+	public Bank createBank(final Bank bank) {
 
 		if (bank.getAmount().intValue()<0) {
 			throw new MyException("invalid input,provide valid ammount");
@@ -26,9 +31,9 @@ public class BankServiceImpl implements BankService {
 	}
 
 	@Override
-	public Bank getBankDetails(Integer bankId) {
+	public Bank getBankDetails(final Integer bankId) {
 		
-		Optional<Bank> bank = bankRepo.findById(bankId);
+		final Optional<Bank> bank = bankRepo.findById(bankId);
 		if(bank.isPresent())
 		{
 		

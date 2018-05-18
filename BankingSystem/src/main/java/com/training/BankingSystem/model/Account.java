@@ -25,13 +25,15 @@ public class Account {
 	private Integer customerId;
 	private Integer bankId;
 	private BigDecimal ammount;
-
+/*
+ * Mapping with Transaction
+ */
 	@OneToMany(targetEntity=Transaction.class,mappedBy="accountId")
-	private List<Transaction> accountTransactionList=new ArrayList<>();
+	private List<Transaction> accountTransactionList=new ArrayList<>(); 
 	/*
 	 * parameterized constructor
 	 */
-	public Account(Integer customerId, Integer bankId, BigDecimal ammount) {
+	public Account(final Integer customerId,final Integer bankId,final BigDecimal ammount) {
 		super();
 		this.customerId = customerId;
 		this.bankId = bankId;

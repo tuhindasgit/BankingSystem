@@ -21,13 +21,19 @@ public class Bank {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer bankId;
 	private BigDecimal amount;
-	
+	/*
+	 * mapping between customer and bank
+	 */
 	@OneToMany(targetEntity=Customer.class,mappedBy="bankId")
 	private List<Customer> bankCustomerList = new ArrayList<>();
-	
+	/*
+	 * mapping between atm and bank
+	 */
 	@OneToMany(targetEntity=ATM.class,mappedBy="bankId")
 	private List<ATM> bankAtmList=new ArrayList<>();
-	
+	/*
+	 * mapping between account and atm
+	 */
 	@OneToMany(targetEntity=Account.class,mappedBy="bankId")
 	private List<Account> bankAccountList=new ArrayList<>();
 	

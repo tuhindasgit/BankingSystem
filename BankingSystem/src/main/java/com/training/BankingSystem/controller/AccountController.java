@@ -14,37 +14,46 @@ import org.springframework.web.bind.annotation.RestController;
 import com.training.BankingSystem.exception.MyException;
 import com.training.BankingSystem.model.Account;
 import com.training.BankingSystem.services.AccountServiceImpl;
-
+/*
+ * Account controller
+ */
 @RestController
 public class AccountController {
 	@Autowired
-	AccountServiceImpl acountservice;
-
+	AccountServiceImpl acountservice;	
+/*
+ * Request-response mapping for adding a account
+ */
 	@RequestMapping(value = "/addaccount", method = RequestMethod.POST)
-	public ResponseEntity<?> addAccount(@RequestBody Account account) {
+	public ResponseEntity<?> addAccount(@RequestBody final Account account) {
 		try {
-			Account account1 = acountservice.createAccount(account);
+			final Account account1 = acountservice.createAccount(account);
 			return new ResponseEntity<Account>(account1, HttpStatus.CREATED);
 		} catch (MyException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
 		}
 
 	}
-
+/*
+ * To view a account
+ */
 	@RequestMapping(value = "/viewaccount/{accountId}", method = RequestMethod.GET)
-	public ResponseEntity<?> viewAccount(@PathVariable Integer accountId) {
+	public ResponseEntity<?> viewAccount(@PathVariable final Integer accountId) {
 		try {
-			Account account1 = acountservice.getAccountDetails(accountId);
+			final Account account1 = acountservice.getAccountDetails(accountId);
 			return new ResponseEntity<Account>(account1, HttpStatus.CREATED);
 		} catch (MyException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
 		}
 
 	}
-
+/*
+ * Rest end point for withdraw function
+ * select=ATM or bank
+ */
 	@RequestMapping(value = "/withdrawammount/{withdraw}/{accountId}/{select}/{atmID}", method = RequestMethod.GET)
-	public ResponseEntity<?> withdrawFromBank(@PathVariable BigDecimal withdraw, @PathVariable Integer accountId,
-			@PathVariable String select, @PathVariable Integer atmID) {
+	public ResponseEntity<?> withdrawFromBank(@PathVariable final BigDecimal withdraw, @PathVariable final Integer accountId,
+			@PathVariable final String select, @PathVariable final Integer atmID) {
 		try {
 			 acountservice.withdrawMoney(withdraw, accountId,select,atmID);
 			return new ResponseEntity<String>("Money withdrawn",HttpStatus.CREATED);
@@ -53,11 +62,13 @@ public class AccountController {
 		}
 
 	}
-
+/*
+ * Rest end point for deposit for deposit amount
+ */
 	@RequestMapping(value = "/depositammount/{deposit}/{accountId}", method = RequestMethod.GET)
-	public ResponseEntity<?> depositFromBank(@PathVariable BigDecimal deposit, @PathVariable Integer accountId) {
+	public ResponseEntity<?> depositFromBank(@PathVariable final BigDecimal deposit, @PathVariable final Integer accountId) {
 		try {
-			Account account3 = acountservice.depositMoney(deposit, accountId);
+			final Account account3 = acountservice.depositMoney(deposit, accountId);
 			return new ResponseEntity<Account>(account3, HttpStatus.CREATED);
 		} catch (MyException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);

@@ -15,19 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 import com.training.BankingSystem.exception.MyException;
 import com.training.BankingSystem.model.ATM;
 import com.training.BankingSystem.services.AtmServiceImpl;
-
+/*
+ * RestController for atmController
+ */
 @RestController
 public class AtmController {
 
 	@Autowired
 	AtmServiceImpl atmservice;
-	
+	/*
+	 * Rest end point for adding atm 
+	 */
 	@RequestMapping(value = "/addatm", method = RequestMethod.POST)
-	public ResponseEntity<?> addAtm(@RequestBody ATM atm)
+	public ResponseEntity<?> addAtm(@RequestBody final ATM atm)
 	{
 		try
 		{
-			ATM atm1=atmservice.createBank(atm);
+			final ATM atm1=atmservice.createBank(atm);
 			return new ResponseEntity<ATM>(atm1,HttpStatus.CREATED);
 		}
 		catch(MyException e)
@@ -35,15 +39,17 @@ public class AtmController {
 			return new ResponseEntity<String>(e.toString(),HttpStatus.BAD_REQUEST);
 		}
 	}
-		
+		/*
+		 * Rest end point for deposit from bank
+		 */
 		@RequestMapping(value = "/depositfrombank/{Deposit}/{atmId}", method = RequestMethod.GET)
-		public ResponseEntity<?> depositFromBank(@PathVariable BigDecimal Deposit,
-										@PathVariable Integer atmId
+		public ResponseEntity<?> depositFromBank(@PathVariable final BigDecimal Deposit,
+										@PathVariable final Integer atmId
 											)
 		{	
 			try
 			{
-				ATM atm1=atmservice.addMoneyFromBank(Deposit, atmId);
+				final ATM atm1=atmservice.addMoneyFromBank(Deposit, atmId);
 				return new ResponseEntity<ATM>(atm1,HttpStatus.CREATED);
 			}
 			catch(MyException e)

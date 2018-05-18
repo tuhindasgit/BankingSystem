@@ -7,9 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.stereotype.Component;
+
 import lombok.Data;
 @Entity
 @Data
+@Component
 public class Transaction {
 
 	@Id
@@ -19,8 +22,12 @@ public class Transaction {
 	private Integer accountId;
 	private BigDecimal ammount;
 	private String transactionType;
-	
-	public Transaction(Integer transactionId, Integer customerId, Integer accountId, BigDecimal ammount,
+/*
+ * Parameterized constructor
+ * 
+ */
+			
+	public Transaction( Integer customerId, Integer accountId, BigDecimal ammount,
 			String transactionType) {
 		super();
 		this.customerId = customerId;

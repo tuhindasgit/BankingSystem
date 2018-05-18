@@ -16,6 +16,9 @@ public class ATM {
 	private Integer ATMId;
 	private BigDecimal ammount;
 	private Integer bankId;
+	/*
+	 * Parameterized Constructor 
+	 */
 	public ATM(BigDecimal ammount, Integer bankId) {
 		super();
 		this.ammount = ammount;

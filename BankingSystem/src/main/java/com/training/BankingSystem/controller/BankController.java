@@ -13,28 +13,34 @@ import com.training.BankingSystem.exception.MyException;
 import com.training.BankingSystem.model.Bank;
 import com.training.BankingSystem.model.Customer;
 import com.training.BankingSystem.services.BankServiceImpl;
-
+/*
+ * Rest Controller for bank services
+ */
 @RestController
 public class BankController {
 
 	@Autowired
 	BankServiceImpl bankService;
-
+/*
+ * Rest end point for adding a bank
+ */
 	@RequestMapping(value = "/addbank", method = RequestMethod.POST)
-	public ResponseEntity<?> addbank(@RequestBody Bank bank) {
+	public ResponseEntity<?> addbank(@RequestBody final Bank bank) {
 		try {
-			Bank bank1 = bankService.createBank(bank);
-			return new ResponseEntity<Bank>(bank, HttpStatus.CREATED);
+			final Bank bank1 = bankService.createBank(bank);
+			return new ResponseEntity<Bank>(bank1, HttpStatus.CREATED);
 		} catch (MyException e) {
 
 			return new ResponseEntity<String>(e.toString(), HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
-
+/*
+ * Rest end point for viewing a bank
+ */
 	@RequestMapping(value = "/viewbank/{bankId}", method = RequestMethod.GET)
-	public ResponseEntity<?> viewbank(@PathVariable("bankId") Integer bankId) {
+	public ResponseEntity<?> viewbank(@PathVariable("bankId") final Integer bankId) {
 		try {
-			Bank bank2 = bankService.getBankDetails(bankId);
+			final Bank bank2 = bankService.getBankDetails(bankId);
 
 			return new ResponseEntity<Bank>(bank2, HttpStatus.OK);
 		} catch (MyException e) {

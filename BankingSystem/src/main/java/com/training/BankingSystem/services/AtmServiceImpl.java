@@ -35,10 +35,10 @@ public class AtmServiceImpl implements AtmService {
 	 * @see com.training.BankingSystem.services.AtmService#createBank(com.training.BankingSystem.model.ATM)
 	 */
 	@Override
-	public ATM createBank(ATM atm) throws MyException{
+	public ATM createBank(final ATM atm) throws MyException{
 		
-		Integer id=atm.getBankId();
-		Optional<Bank> bank1=bankRepo.findById(id);
+		final Integer id=atm.getBankId();
+		final Optional<Bank> bank1=bankRepo.findById(id);
 		if(bank1.isPresent())
 		{
 		return atmRepo.save(atm);
@@ -54,14 +54,14 @@ public class AtmServiceImpl implements AtmService {
 	 * @see com.training.BankingSystem.services.AtmService#addMoneyFromBank(java.math.BigDecimal, java.lang.Integer)
 	 */
 	@Override
-	public ATM addMoneyFromBank(BigDecimal deposit, Integer atmId) {
+	public ATM addMoneyFromBank(final BigDecimal deposit, final Integer atmId) {
 	
-		Optional<ATM> atm1=atmRepo.findById(atmId);
+		final Optional<ATM> atm1=atmRepo.findById(atmId);
 		if(atm1.isPresent())
 		{
-			Integer id=atm1.get().getBankId();
-			Optional<Bank> bank1=bankRepo.findById(id);
-			Bank bank2=bank1.get();
+			final Integer id=atm1.get().getBankId();
+			final Optional<Bank> bank1=bankRepo.findById(id);
+			final Bank bank2=bank1.get();
 				if(deposit.intValue() < bank2.getAmount().intValue())
 				{
 					atm1.get().setAmmount(atm1.get().getAmmount().add(deposit));

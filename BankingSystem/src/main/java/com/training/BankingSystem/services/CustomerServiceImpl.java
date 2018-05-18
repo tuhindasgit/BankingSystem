@@ -10,6 +10,9 @@ import com.training.BankingSystem.model.Bank;
 import com.training.BankingSystem.model.Customer;
 import com.training.BankingSystem.repository.BankRepo;
 import com.training.BankingSystem.repository.CustomerRepo;
+/*
+ * Customer services
+ */
 @Service
 public class CustomerServiceImpl implements CustomerServicee{
 
@@ -17,23 +20,29 @@ public class CustomerServiceImpl implements CustomerServicee{
 	CustomerRepo customerRepo;
 	@Autowired
 	BankRepo bankRepo;
-	
+	/*
+	 * (non-Javadoc)
+	 * @see com.training.BankingSystem.services.CustomerServicee#createCustomer(com.training.BankingSystem.model.Customer)
+	 */
 	@Override
-	public Customer createCustomer(Customer customer) throws MyException {
-		Integer id=customer.getBankId();
-		Optional<Bank> bank=bankRepo.findById(id);
+	public Customer createCustomer(final Customer customer) throws MyException {
+		final Integer id=customer.getBankId();
+		final Optional<Bank> bank=bankRepo.findById(id);
 		if (bank.isPresent()) {
-			Customer cust = customerRepo.save(customer);
+			final Customer cust = customerRepo.save(customer);
 			return cust;
 		} else {
 			throw new MyException("invalid input,provide valid ammount..invalid");
 
 		}
 	}
-
+/*
+ * (non-Javadoc)
+ * @see com.training.BankingSystem.services.CustomerServicee#getCustomerDetails(java.lang.Integer)
+ */
 	@Override
-	public Customer getCustomerDetails(Integer customerId) {
-		Optional<Customer> customer1 = customerRepo.findById(customerId);
+	public Customer getCustomerDetails(final Integer customerId) {
+		final Optional<Customer> customer1 = customerRepo.findById(customerId);
 		if(customer1.isPresent())
 		{
 		

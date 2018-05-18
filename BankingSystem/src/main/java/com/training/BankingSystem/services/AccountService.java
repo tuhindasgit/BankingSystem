@@ -8,6 +8,8 @@ import com.training.BankingSystem.model.Account;
 
 public interface AccountService {
 
+ 
+
 	public Account createAccount(Account account);
 	public Account getAccountDetails(Integer accountId);
 	public void withdrawMoney(BigDecimal withdrawl,Integer accountId,String select,Integer atmId);
