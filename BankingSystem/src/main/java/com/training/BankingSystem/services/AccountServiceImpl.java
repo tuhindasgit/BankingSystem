@@ -126,7 +126,7 @@ public class AccountServiceImpl implements AccountService {
 						transervice.createTransaction(acnt1, "Debit");
 
 					} else {
-						throw new MyException("awkat ki bahar");
+						throw new MyException("Requested money is too large");
 					}
 				}
 				else {

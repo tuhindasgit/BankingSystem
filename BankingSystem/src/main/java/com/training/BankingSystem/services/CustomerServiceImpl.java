@@ -32,7 +32,7 @@ public class CustomerServiceImpl implements CustomerServicee{
 			final Customer cust = customerRepo.save(customer);
 			return cust;
 		} else {
-			throw new MyException("invalid input,provide valid ammount..invalid");
+			throw new MyException("Customer is not mapped with any bank");
 
 		}
 	}

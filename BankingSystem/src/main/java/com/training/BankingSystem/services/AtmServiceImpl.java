@@ -72,7 +72,7 @@ public class AtmServiceImpl implements AtmService {
 				}
 				else
 				{
-					throw new MyException("Demoneitization,wait for few days");
+					throw new MyException("ATM has less amount");
 				}
 			}
 		
