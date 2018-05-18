@@ -76,12 +76,15 @@ public class AccountServiceImpl implements AccountService {
  */
 	@Override
 	@Transactional
-	public void withdrawMoney(final BigDecimal withdrawl, final Integer accountId, final String select, final Integer atmId) {
+	public void withdrawMoney(final BigDecimal withdrawl, final Integer accountId, final String select, final Integer atmId,final Integer customerId) {
 		final Optional<Account> account1 = accountRepo.findById(accountId);
+		
 		if (account1.isPresent()) {
 			final Account acnt1 = account1.get();
 			final Integer bankId = acnt1.getBankId();
-
+			final Integer customerId1 = acnt1.getCustomerId();
+			if(customerId==customerId1)
+			{
 			if (select.equals("bank"))  {
 				final Optional<Bank> opBank1 = bankRepo.findById(bankId);
 
@@ -138,6 +141,10 @@ public class AccountServiceImpl implements AccountService {
 	{
 		throw new MyException("type must be bank or atm");
 	}
+		}else
+		{
+			throw new MyException("Account is not mapped with this customer");
+			}
 		}
 	else
 	{

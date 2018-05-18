@@ -9,12 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.stereotype.Component;
+
 import lombok.Data;
 /*
  * Entity class for Customer
  */
 @Entity
 @Data
+@Component
 public class Customer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

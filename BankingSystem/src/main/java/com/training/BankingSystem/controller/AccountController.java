@@ -51,11 +51,11 @@ public class AccountController {
  * Rest end point for withdraw function
  * select=ATM or bank
  */
-	@RequestMapping(value = "/withdrawammount/{withdraw}/{accountId}/{select}/{atmID}", method = RequestMethod.GET)
+	@RequestMapping(value = "/withdrawammount/{withdraw}/{accountId}/{select}/{atmID}/{customerId}", method = RequestMethod.GET)
 	public ResponseEntity<?> withdrawFromBank(@PathVariable final BigDecimal withdraw, @PathVariable final Integer accountId,
-			@PathVariable final String select, @PathVariable final Integer atmID) {
+			@PathVariable final String select, @PathVariable final Integer atmID,@PathVariable final Integer customerId) {
 		try {
-			 acountservice.withdrawMoney(withdraw, accountId,select,atmID);
+			 acountservice.withdrawMoney(withdraw, accountId,select,atmID,customerId);
 			return new ResponseEntity<String>("Money withdrawn",HttpStatus.CREATED);
 		} catch (MyException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
