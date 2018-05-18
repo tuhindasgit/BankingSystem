@@ -1,16 +1,14 @@
 package com.training.BankingSystem.BankTest;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.client.RestTemplate;
-
-import com.training.BankingSystem.model.Customer;
+import org.springframework.test.web.servlet.MockMvc;
 
 public class TestCustomer {
+	
+	private MockMvc mockMvc;
+	
+	
 
-//	@Autowired
+/*//	@Autowired
 //	Customer customer;
 	@Test
 	public void testCustomer() {
@@ -26,5 +24,5 @@ public class TestCustomer {
 		 System.out.println(customer);
 		 System.out.println("   sggs    "+result);
 		   assertEquals("tuhin",result.getName());
-	}
+	}*/
 }
