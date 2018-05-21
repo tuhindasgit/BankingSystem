@@ -1,28 +1,55 @@
 package com.training.BankingSystem.BankTest;
 
-import org.springframework.test.web.servlet.MockMvc;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import com.training.BankingSystem.exception.MyException;
+import com.training.BankingSystem.model.Bank;
+import com.training.BankingSystem.model.Customer;
+import com.training.BankingSystem.repository.BankRepo;
+import com.training.BankingSystem.repository.CustomerRepo;
+import com.training.BankingSystem.services.BankServiceImpl;
+import com.training.BankingSystem.services.CustomerServiceImpl;
+
+@RunWith(MockitoJUnitRunner.class)
 public class TestCustomer {
-	
-	private MockMvc mockMvc;
-	
-	
 
-/*//	@Autowired
-//	Customer customer;
+	@Mock
+	CustomerRepo custmerRepo;
+	@Mock
+	BankRepo bankRepo;
+	@InjectMocks
+	CustomerServiceImpl customerService;
+	
 	@Test
-	public void testCustomer() {
-		Customer customer=new Customer();
-		 final String uri = "http://localhost:8082/addcustomer";
-		 RestTemplate restTemplate = new RestTemplate();
-		 
-		   customer.setBankId(5);
-		   customer.setName("tuhin");
-		   customer.setPin(102);
-		  	 		   
-		    Customer result = restTemplate.postForObject( uri, customer, Customer.class);
-		 System.out.println(customer);
-		 System.out.println("   sggs    "+result);
-		   assertEquals("tuhin",result.getName());
-	}*/
+	public void TestCustomer()
+	{
+		Customer customer=new Customer("tuhin",103203,1);
+		Bank bank=new Bank(1,new BigDecimal(100));
+		Optional<Bank> demoBank=Optional.of(bank);
+		when(bankRepo.findById(1)).thenReturn(demoBank);
+		when(custmerRepo.save(Mockito.<Customer>any())).thenReturn(customer);
+		assertEquals("tuhin",customerService.createCustomer(customer).getName());
+	}
+	
+	@Test(expected=MyException.class)
+	public void TestCustomerF() {
+		Customer customer=new Customer("tuhin",103203,1);
+		Bank bank=new Bank(1,new BigDecimal(100));
+		Optional<Bank> demoBank=Optional.of(bank);
+		when(customerService.createCustomer(customer)).thenThrow(new MyException("invalid input"));
+		
+	}
+	
 }

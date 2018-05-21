@@ -46,4 +46,11 @@ public Bank() {
 	super();
 }
 
+public Bank(Integer bankId, BigDecimal amount) {
+	super();
+	this.bankId = bankId;
+	this.amount = amount;
+}
+
+
 }
