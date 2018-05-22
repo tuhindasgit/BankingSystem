@@ -9,15 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
-
-import lombok.Data;
 /*
  * @Tuhin Das
  * Account Entity class
  */
 @Entity
-@Data
+
 public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -27,7 +27,7 @@ import com.training.BankingSystem.services.CustomerServiceImpl;
 public class TestAtm {
 
 	@Mock
-	CustomerRepo custmerRepo;
+	private CustomerRepo custmerRepo;
 	@Mock
 	BankRepo bankRepo;
 	@Mock
@@ -48,32 +48,32 @@ public class TestAtm {
 	
 	@Test(expected=MyException.class)
 	public void TestCreateAtmF() {
-		ATM atm=new ATM(new BigDecimal(100), 1);
-		Bank bank=new Bank(new BigDecimal(-102));
+		final ATM atm=new ATM(new BigDecimal(100), 1);
+		final Bank bank=new Bank(new BigDecimal(-102));
 		when(atmService.createBank(atm)).thenThrow(new MyException("invalid input"));
 		
 	}
 	
 	@Test
 	public void TestAddMoney() {
-		ATM atm=new ATM(new BigDecimal(100), 1);
-		Optional<ATM> demoAtm=Optional.of(atm);
+		final ATM atm=new ATM(new BigDecimal(100), 1);
+		final Optional<ATM> demoAtm=Optional.of(atm);
 		when(atmRepo.findById(1)).thenReturn(demoAtm);
-		Bank bank=new Bank(1,new BigDecimal(100));
-		Optional<Bank> demoBank=Optional.of(bank);
+		final Bank bank=new Bank(1,new BigDecimal(100));
+		final Optional<Bank> demoBank=Optional.of(bank);
 		when(bankRepo.findById(1)).thenReturn(demoBank);
-		ATM returnedAtm=new ATM(new BigDecimal(140), 1);
-		Optional<ATM> returnedDemoAtm=Optional.of(returnedAtm);
+		final ATM returnedAtm=new ATM(new BigDecimal(140), 1);
+		final Optional<ATM> returnedDemoAtm=Optional.of(returnedAtm);
 		when(atmRepo.save(Mockito.<ATM>any())).thenReturn(returnedDemoAtm.get());
 		assertEquals(returnedDemoAtm.get(),atmService.addMoneyFromBank(new BigDecimal(40),1));
 	}
 	@Test(expected=MyException.class)
 	public void TestAddMoneyN() {
-		ATM atm=new ATM(new BigDecimal(100), 1);
-		Optional<ATM> demoAtm=Optional.of(atm);
+		final ATM atm=new ATM(new BigDecimal(100), 1);
+		final Optional<ATM> demoAtm=Optional.of(atm);
 		when(atmRepo.findById(1)).thenReturn(demoAtm);
-		Bank bank=new Bank(1,new BigDecimal(100));
-		Optional<Bank> demoBank=Optional.of(bank);
+		final Bank bank=new Bank(1,new BigDecimal(100));
+		final Optional<Bank> demoBank=Optional.of(bank);
 		when(bankRepo.findById(1)).thenReturn(demoBank);
 		//ATM returnedAtm=new ATM(new BigDecimal(140), 1);
 		//Optional<ATM> returnedDemoAtm=Optional.of(returnedAtm);

@@ -63,7 +63,7 @@ public class TestAccount {
 		final Account accountReturned=new Account(1,1,new BigDecimal(200));
 		when(accountRepo.save(Mockito.<Account>any())).thenReturn(accountReturned);
 		
-		assertEquals(accountReturned,accountService.depositMoney(new BigDecimal(40),1));
+		assertEquals(accountReturned,accountService.depositMoney(new BigDecimal(100),1));
 	}
 	
 	

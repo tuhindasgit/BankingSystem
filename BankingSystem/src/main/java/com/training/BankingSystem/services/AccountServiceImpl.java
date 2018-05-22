@@ -34,6 +34,8 @@ public class AccountServiceImpl implements AccountService {
 	AtmRepo atmRepo;
 	@Autowired
 	TransactionService transervice;
+	@Autowired
+	BankDenmServiceImpl bankDenmService;
 /*
  * (non-Javadoc)
  * @see com.training.BankingSystem.services.AccountService#createAccount(com.training.BankingSystem.model.Account)
@@ -47,6 +49,10 @@ public class AccountServiceImpl implements AccountService {
 		if (bank1.isPresent() && customer1.isPresent()) {
 			if (bank1.get().getBankId() == customer1.get().getBankId()) {
 				final Account account1 = accountRepo.save(account);
+				Bank savedBank=bank1.get();
+				BigDecimal bankAmmount=savedBank.getAmount().add(account.getAmmount());
+				savedBank.setAmount(bankAmmount);
+				bankRepo.save(savedBank);
 				return account1;
 			} else {
 				throw new MyException("Bank id Does not matches with customers bank id");
@@ -124,6 +130,7 @@ public class AccountServiceImpl implements AccountService {
 						acnt1.setAmmount(accountMoney);
 						accountRepo.save(acnt1);
 						transervice.createTransaction(acnt1, "Debit");
+						
 
 					} else {
 						throw new MyException("Requested money is too large");
@@ -155,6 +162,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	@Transactional
 	public Account depositMoney(final BigDecimal deposit, final Integer accountId) {
+		
 		final Optional<Account> account2 = accountRepo.findById(accountId);
 		if (account2.isPresent()) {
 			final Account acnt2 = account2.get();
@@ -170,6 +178,9 @@ public class AccountServiceImpl implements AccountService {
 				bank2.setAmount(bankAmmount);
 				bankRepo.save(bank2);
 				transervice.createTransaction(acnt2, "Credit");
+				System.out.println("inside                  ");
+				bankDenmService.depositDemn(deposit, bankId);
+			System.out.println("outside                   ");	
 				return acnt2;
 
 			} else {

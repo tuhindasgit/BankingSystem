@@ -26,6 +26,8 @@ public class AtmServiceImpl implements AtmService {
 	@Autowired
 	AtmRepo atmRepo;
 	@Autowired
+	AtmServiceImpl atmservice;
+	@Autowired
 	BankRepo bankRepo;
 	@Autowired
 	AccountRepo accountRepo;

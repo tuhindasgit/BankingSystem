@@ -18,6 +18,7 @@ import com.training.BankingSystem.services.AccountServiceImpl;
  * Account controller
  */
 @RestController
+
 public class AccountController {
 	@Autowired
 	AccountServiceImpl acountservice;	

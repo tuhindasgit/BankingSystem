@@ -18,8 +18,10 @@ public class CustomerServiceImpl implements CustomerServicee{
 
 	@Autowired
 	CustomerRepo customerRepo;
+	
 	@Autowired
-	BankRepo bankRepo;
+	BankServiceImpl bankservice;
+
 	/*
 	 * (non-Javadoc)
 	 * @see com.training.BankingSystem.services.CustomerServicee#createCustomer(com.training.BankingSystem.model.Customer)
@@ -27,8 +29,8 @@ public class CustomerServiceImpl implements CustomerServicee{
 	@Override
 	public Customer createCustomer(final Customer customer) throws MyException {
 		final Integer id=customer.getBankId();
-		final Optional<Bank> bank=bankRepo.findById(id);
-		if (bank.isPresent()) {
+		final Optional<Bank> bank=bankservice.findById(id);
+				if (bank.isPresent()) {
 			final Customer cust = customerRepo.save(customer);
 			return cust;
 		} else {

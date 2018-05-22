@@ -5,11 +5,11 @@ import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.training.BankingSystem.exception.MyException;
@@ -19,6 +19,7 @@ import com.training.BankingSystem.services.AtmServiceImpl;
  * RestController for atmController
  */
 @RestController
+@RequestMapping(value="/atm")
 public class AtmController {
 
 	@Autowired
@@ -26,7 +27,7 @@ public class AtmController {
 	/*
 	 * Rest end point for adding atm 
 	 */
-	@RequestMapping(value = "/addatm", method = RequestMethod.POST)
+	@PostMapping
 	public ResponseEntity<?> addAtm(@RequestBody final ATM atm)
 	{
 		try
@@ -42,7 +43,7 @@ public class AtmController {
 		/*
 		 * Rest end point for deposit from bank
 		 */
-		@RequestMapping(value = "/depositfrombank/{Deposit}/{atmId}", method = RequestMethod.GET)
+		@GetMapping(value = "/{Deposit}/{atmId}")
 		public ResponseEntity<?> depositFromBank(@PathVariable final BigDecimal Deposit,
 										@PathVariable final Integer atmId
 											)

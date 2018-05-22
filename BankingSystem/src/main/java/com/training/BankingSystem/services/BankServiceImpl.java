@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import com.training.BankingSystem.exception.MyException;
@@ -18,7 +19,8 @@ public class BankServiceImpl implements BankService {
 	@Autowired
 	BankRepo bankRepo;
 	
-
+@Autowired
+Environment environment;
 /*
  * (non-Javadoc)
  * @see com.training.BankingSystem.services.BankService#createBank(com.training.BankingSystem.model.Bank)
@@ -44,8 +46,18 @@ public class BankServiceImpl implements BankService {
 		}
 		else
 		{
-			throw new MyException("Id is not present");
+			throw new MyException(environment.getProperty("noDataFound"));
 		}
 	}
-
+	
+	public Bank saveBank(final Bank bank)
+	{
+		return bankRepo.save(bank);
+	}
+	
+	public Optional<Bank> findById(Integer id)
+	{
+		return bankRepo.findById(id);
+	}
+ 
 }

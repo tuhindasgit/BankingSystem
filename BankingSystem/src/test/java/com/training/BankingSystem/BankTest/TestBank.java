@@ -29,21 +29,25 @@ public class TestBank {
 
 	
 	@Mock
-	BankRepo bankRepo;
+	private BankRepo bankRepo;
+	
+	
+	
 	@InjectMocks
-	BankServiceImpl bankserviceimpl;
+	private BankServiceImpl bankserviceimpl;
 	
 	@Test
 	public void TestBank()
 	{
-		Bank bank=new Bank(new BigDecimal(102));
+		final Bank bank=new Bank(new BigDecimal(102));
 		when(bankRepo.save(Mockito.<Bank>any())).thenReturn(bank);
+		
 		assertEquals(bankserviceimpl.createBank(bank).getAmount(),new BigDecimal(102));
 	}
 	
 	@Test(expected=MyException.class)
 	public void TestBankF() {
-		Bank bank=new Bank(new BigDecimal(-102));
+		final Bank bank=new Bank(new BigDecimal(-102));
 		when(bankserviceimpl.createBank(bank)).thenThrow(new MyException("invalid input"));
 		
 	}
