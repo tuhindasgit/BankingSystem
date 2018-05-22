@@ -25,5 +25,41 @@ public class ATM {
 	public ATM() {
 		super();
 	}
+	/**
+	 * @return the aTMId
+	 */
+	public Integer getATMId() {
+		return ATMId;
+	}
+	/**
+	 * @param aTMId the aTMId to set
+	 */
+	public void setATMId(Integer aTMId) {
+		ATMId = aTMId;
+	}
+	/**
+	 * @return the ammount
+	 */
+	public BigDecimal getAmmount() {
+		return ammount;
+	}
+	/**
+	 * @param ammount the ammount to set
+	 */
+	public void setAmmount(BigDecimal ammount) {
+		this.ammount = ammount;
+	}
+	/**
+	 * @return the bankId
+	 */
+	public Integer getBankId() {
+		return bankId;
+	}
+	/**
+	 * @param bankId the bankId to set
+	 */
+	public void setBankId(Integer bankId) {
+		this.bankId = bankId;
+	}
 	
 }

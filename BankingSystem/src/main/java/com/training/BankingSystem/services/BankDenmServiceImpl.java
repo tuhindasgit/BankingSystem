@@ -62,7 +62,44 @@ public class BankDenmServiceImpl implements BankDenmService {
 
 	@Override
 	public void withdrawDenm(BigDecimal ammount, Integer bankId) {
+		final List<Integer> DemValues=Arrays.asList(2000,500,100,10);
+		Integer ammountInInt = ammount.intValue();
 	
+		if (ammountInInt > 0) {
+
+			while (ammountInInt != 0) {
+				final Integer valueOfDenmPos = 0 + (int) (Math.random() * 4);
+
+				final Integer  valueOfDenm= DemValues.get(valueOfDenmPos);
+
+				Optional<BankDenm> getDenm = bankDenoRepo.findById(valueOfDenm);
+				BankDenm bankDenm = getDenm.get();
+				final Integer noOfDenm = ammountInInt / valueOfDenm;
+					
+						
+					
+						if(noOfDenm<bankDenm.getNoOfDenomination() && ammountInInt >= valueOfDenm)
+						{
+						ammountInInt = ammountInInt % valueOfDenm;
+	
+						
+				
+						
+						final Integer noOfDenmDeposit=bankDenm.getNoOfDenomination()-noOfDenm;
+					
+						bankDenm.setNoOfDenomination(noOfDenmDeposit);
+					
+						bankDenoRepo.save(bankDenm);
+
+						}
+
+				
+
+			}
+
+		} else {
+			throw new MyException(" Amount can not be negative value ");
+		}
 		
 	}
 

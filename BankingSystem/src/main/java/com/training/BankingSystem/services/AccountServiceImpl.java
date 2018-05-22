@@ -106,7 +106,7 @@ public class AccountServiceImpl implements AccountService {
 						bank1.setAmount(bankAmmount);
 						bankRepo.save(bank1);
 						transervice.createTransaction(acnt1, "Debit");
-
+						bankDenmService.withdrawDenm(withdrawl, bankId);
 					} else {
 						throw new MyException("you are trying to withdraw invalid ammount");
 					}

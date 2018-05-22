@@ -39,5 +39,65 @@ public class Account {
 	public Account() {
 		super();
 	}
+	/**
+	 * @return the accountId
+	 */
+	public Integer getAccountId() {
+		return accountId;
+	}
+	/**
+	 * @param accountId the accountId to set
+	 */
+	public void setAccountId(Integer accountId) {
+		this.accountId = accountId;
+	}
+	/**
+	 * @return the customerId
+	 */
+	public Integer getCustomerId() {
+		return customerId;
+	}
+	/**
+	 * @param customerId the customerId to set
+	 */
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
+	/**
+	 * @return the bankId
+	 */
+	public Integer getBankId() {
+		return bankId;
+	}
+	/**
+	 * @param bankId the bankId to set
+	 */
+	public void setBankId(Integer bankId) {
+		this.bankId = bankId;
+	}
+	/**
+	 * @return the ammount
+	 */
+	public BigDecimal getAmmount() {
+		return ammount;
+	}
+	/**
+	 * @param ammount the ammount to set
+	 */
+	public void setAmmount(BigDecimal ammount) {
+		this.ammount = ammount;
+	}
+	/**
+	 * @return the accountTransactionList
+	 */
+	public List<Transaction> getAccountTransactionList() {
+		return accountTransactionList;
+	}
+	/**
+	 * @param accountTransactionList the accountTransactionList to set
+	 */
+	public void setAccountTransactionList(List<Transaction> accountTransactionList) {
+		this.accountTransactionList = accountTransactionList;
+	}
 
 }

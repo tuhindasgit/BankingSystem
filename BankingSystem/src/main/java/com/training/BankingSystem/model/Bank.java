@@ -50,5 +50,33 @@ public Bank(Integer bankId, BigDecimal amount) {
 	this.amount = amount;
 }
 
+/**
+ * @return the bankId
+ */
+public Integer getBankId() {
+	return bankId;
+}
+
+/**
+ * @param bankId the bankId to set
+ */
+public void setBankId(Integer bankId) {
+	this.bankId = bankId;
+}
+
+/**
+ * @return the amount
+ */
+public BigDecimal getAmount() {
+	return amount;
+}
+
+/**
+ * @param amount the amount to set
+ */
+public void setAmount(BigDecimal amount) {
+	this.amount = amount;
+}
+
 
 }

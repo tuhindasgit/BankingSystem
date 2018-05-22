@@ -11,5 +11,50 @@ public class RefAtmDenm {
 	@Id
 	private Integer denomination;
 	private Integer noOfDenomination;
+	/**
+	 * @return the atmID
+	 */
+	public Integer getAtmID() {
+		return atmID;
+	}
+	/**
+	 * @param atmID the atmID to set
+	 */
+	public void setAtmID(Integer atmID) {
+		this.atmID = atmID;
+	}
+	/**
+	 * @return the denomination
+	 */
+	public Integer getDenomination() {
+		return denomination;
+	}
+	/**
+	 * @param denomination the denomination to set
+	 */
+	public void setDenomination(Integer denomination) {
+		this.denomination = denomination;
+	}
+	/**
+	 * @return the noOfDenomination
+	 */
+	public Integer getNoOfDenomination() {
+		return noOfDenomination;
+	}
+	/**
+	 * @param noOfDenomination the noOfDenomination to set
+	 */
+	public void setNoOfDenomination(Integer noOfDenomination) {
+		this.noOfDenomination = noOfDenomination;
+	}
+	public RefAtmDenm(Integer atmID, Integer denomination, Integer noOfDenomination) {
+		super();
+		this.atmID = atmID;
+		this.denomination = denomination;
+		this.noOfDenomination = noOfDenomination;
+	}
+	public RefAtmDenm() {
+		super();
+	}
 	
 }
