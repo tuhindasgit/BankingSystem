@@ -4,31 +4,27 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+public class TestDenomination {
 
-public class RefMoney {
 	@Id
 	private Integer denomination;
 
-	/**
-	 * @return the denomination
-	 */
+	public TestDenomination(Integer denomination) {
+		super();
+		this.denomination = denomination;
+	}
+
 	public Integer getDenomination() {
 		return denomination;
 	}
 
-	/**
-	 * @param denomination the denomination to set
-	 */
 	public void setDenomination(Integer denomination) {
 		this.denomination = denomination;
 	}
 
-	public RefMoney(Integer denomination) {
-		super();
-		this.denomination = denomination;
-	}
-
-	public RefMoney() {
+	public TestDenomination() {
 		super();
 	}
+	
+	
 }

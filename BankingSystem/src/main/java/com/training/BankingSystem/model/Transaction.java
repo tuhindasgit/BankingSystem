@@ -25,14 +25,17 @@ public class Transaction {
  * 
  */
 			
-	public Transaction( Integer customerId, Integer accountId, BigDecimal ammount,
-			String transactionType) {
+	public Transaction( final Integer customerId, final Integer accountId, final BigDecimal ammount,
+			final String transactionType) {
 		super();
 		this.customerId = customerId;
 		this.accountId = accountId;
 		this.ammount = ammount;
 		this.transactionType = transactionType;
 	} 
+	/*
+	 * no parameter constructor
+	 */
 	public Transaction() {
 		super();
 	}
@@ -45,7 +48,7 @@ public class Transaction {
 	/**
 	 * @param transactionId the transactionId to set
 	 */
-	public void setTransactionId(Integer transactionId) {
+	public void setTransactionId(final Integer transactionId) {
 		this.transactionId = transactionId;
 	}
 	/**
@@ -57,7 +60,7 @@ public class Transaction {
 	/**
 	 * @param customerId the customerId to set
 	 */
-	public void setCustomerId(Integer customerId) {
+	public void setCustomerId(final Integer customerId) {
 		this.customerId = customerId;
 	}
 	/**
@@ -69,7 +72,7 @@ public class Transaction {
 	/**
 	 * @param accountId the accountId to set
 	 */
-	public void setAccountId(Integer accountId) {
+	public void setAccountId(final Integer accountId) {
 		this.accountId = accountId;
 	}
 	/**
@@ -81,7 +84,7 @@ public class Transaction {
 	/**
 	 * @param ammount the ammount to set
 	 */
-	public void setAmmount(BigDecimal ammount) {
+	public void setAmmount(final BigDecimal ammount) {
 		this.ammount = ammount;
 	}
 	/**
@@ -93,7 +96,7 @@ public class Transaction {
 	/**
 	 * @param transactionType the transactionType to set
 	 */
-	public void setTransactionType(String transactionType) {
+	public void setTransactionType(final String transactionType) {
 		this.transactionType = transactionType;
 	}
 	

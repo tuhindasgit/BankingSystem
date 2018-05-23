@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.training.BankingSystem.exception.MyException;
 import com.training.BankingSystem.model.BankDenm;
+import com.training.BankingSystem.model.RefMoney;
 import com.training.BankingSystem.repository.BankDenoRepo;
 
 @Service
@@ -17,25 +18,25 @@ public class BankDenmServiceImpl implements BankDenmService {
 
 	@Autowired
 	BankDenoRepo bankDenoRepo;
+	@Autowired
+	RefMoneyService refMoneyService;
 	
 	
 	
 	@Override
 	public void depositDemn(final BigDecimal ammount, final Integer bankId) {
 	
-		final List<Integer> DemValues=Arrays.asList(2000,500,100,10);
+		final List<RefMoney> list=refMoneyService.listOfDenomination();
+		
 		Integer ammountInInt = ammount.intValue();
 	
 		if (ammountInInt > 0) {
 
 			while (ammountInInt != 0) {
 				final Integer valueOfDenmPos = 0 + (int) (Math.random() * 4);
-
-				final Integer  valueOfDenm= DemValues.get(valueOfDenmPos);
-
-			 
-
-					if (ammountInInt >= valueOfDenm) {
+				RefMoney refMoney=list.get(valueOfDenmPos);
+				final Integer  valueOfDenm= refMoney.getDenomination();
+				if (ammountInInt >= valueOfDenm) {
 						final Integer noOfDenm = ammountInInt / valueOfDenm;
 						ammountInInt = ammountInInt % valueOfDenm;
 	

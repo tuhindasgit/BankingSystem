@@ -13,19 +13,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.training.BankingSystem.model.Bank;
 import com.training.BankingSystem.model.BankDenm;
+import com.training.BankingSystem.model.TestRequestDenm;
 import com.training.BankingSystem.services.BankDenmServiceImpl;
+import com.training.BankingSystem.services.TestAtmDenmService;
+import com.training.BankingSystem.services.TestBankDenmService;
+import com.training.BankingSystem.services.TestDenmService;
 
 @RestController
 @RequestMapping(value="/denomination")
 public class DenominationController {
 
 	@Autowired
-	BankDenmServiceImpl bankDenmService;
+	TestBankDenmService bankdenm;
+	@Autowired
+	TestDenmService denm;
+	@Autowired
+	TestAtmDenmService atmDenm;
 	
 	@PostMapping
-	public ResponseEntity<?> addDenomination(@RequestBody final BankDenm bankDenm) {
+	public ResponseEntity<?> addDenomination1(@RequestBody final TestRequestDenm request) {
 		
-			bankDenmService.createBankDenm(bankDenm);
-			return new ResponseEntity<String>("created", HttpStatus.CREATED);
+		denm.addDenomination(request.getDenomination());
+		
+		bankdenm.createBankDenm(request.getDenomination(),request.getBankId());
+		atmDenm.createAtmDenm(request.getDenomination(),request.getAtmId());
+		return new ResponseEntity<String>("created", HttpStatus.CREATED);
 }
 }

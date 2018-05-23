@@ -47,11 +47,11 @@ public class RefAtmDenm {
 	public void setNoOfDenomination(Integer noOfDenomination) {
 		this.noOfDenomination = noOfDenomination;
 	}
-	public RefAtmDenm(Integer atmID, Integer denomination, Integer noOfDenomination) {
+	public RefAtmDenm(Integer atmID, Integer denomination) {
 		super();
 		this.atmID = atmID;
 		this.denomination = denomination;
-		this.noOfDenomination = noOfDenomination;
+
 	}
 	public RefAtmDenm() {
 		super();
