@@ -76,34 +76,18 @@ public class BankDenmServiceImpl implements BankDenmService {
 				Optional<BankDenm> getDenm = bankDenoRepo.findById(valueOfDenm);
 				BankDenm bankDenm = getDenm.get();
 				final Integer noOfDenm = ammountInInt / valueOfDenm;
-					
-						
-					
-						if(noOfDenm<bankDenm.getNoOfDenomination() && ammountInInt >= valueOfDenm)
+				if(noOfDenm<bankDenm.getNoOfDenomination() && ammountInInt >= valueOfDenm)
 						{
 						ammountInInt = ammountInInt % valueOfDenm;
-	
-						
-				
-						
 						final Integer noOfDenmDeposit=bankDenm.getNoOfDenomination()-noOfDenm;
-					
 						bankDenm.setNoOfDenomination(noOfDenmDeposit);
-					
 						bankDenoRepo.save(bankDenm);
-
 						}
-
-				
-
-			}
-
+				}
 		} else {
 			throw new MyException(" Amount can not be negative value ");
 		}
-		
 	}
-
 	@Override
 	public void createBankDenm(BankDenm bankDenm) {
 
