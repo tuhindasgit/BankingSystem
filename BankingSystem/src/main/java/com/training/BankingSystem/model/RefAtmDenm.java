@@ -5,7 +5,7 @@ import javax.persistence.Id;
 
 @Entity
 
-public class RefAtmDenm {
+public class RefAtmDenm extends BaseEntity{
 	
 	private Integer atmID;
 	@Id

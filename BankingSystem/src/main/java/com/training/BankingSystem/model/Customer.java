@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Entity
 
 @Component
-public class Customer {
+public class Customer extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private Integer customerId;

@@ -35,6 +35,8 @@ public class TestAtm {
 	@InjectMocks
 	AtmServiceImpl atmService;
 	
+	
+	
 	@Test
 	public void TestCreateAtm()
 	{

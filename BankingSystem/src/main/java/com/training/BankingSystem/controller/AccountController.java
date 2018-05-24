@@ -28,8 +28,8 @@ public class AccountController {
 	@RequestMapping(value = "/addaccount", method = RequestMethod.POST)
 	public ResponseEntity<?> addAccount(@RequestBody final Account account) {
 		try {
-			final Account account1 = acountservice.createAccount(account);
-			return new ResponseEntity<Account>(account1, HttpStatus.CREATED);
+			final Account accountRes = acountservice.createAccount(account);
+			return new ResponseEntity<Account>(accountRes, HttpStatus.CREATED);
 		} catch (MyException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
 		}
@@ -41,8 +41,8 @@ public class AccountController {
 	@RequestMapping(value = "/viewaccount/{accountId}", method = RequestMethod.GET)
 	public ResponseEntity<?> viewAccount(@PathVariable final Integer accountId) {
 		try {
-			final Account account1 = acountservice.getAccountDetails(accountId);
-			return new ResponseEntity<Account>(account1, HttpStatus.CREATED);
+			final Account accountRes = acountservice.getAccountDetails(accountId);
+			return new ResponseEntity<Account>(accountRes, HttpStatus.CREATED);
 		} catch (MyException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
 		}
@@ -69,8 +69,8 @@ public class AccountController {
 	@RequestMapping(value = "/depositammount/{deposit}/{accountId}", method = RequestMethod.GET)
 	public ResponseEntity<?> depositFromBank(@PathVariable final BigDecimal deposit, @PathVariable final Integer accountId) {
 		try {
-			final Account account3 = acountservice.depositMoney(deposit, accountId);
-			return new ResponseEntity<Account>(account3, HttpStatus.CREATED);
+			final Account accountRes = acountservice.depositMoney(deposit, accountId);
+			return new ResponseEntity<Account>(accountRes, HttpStatus.CREATED);
 		} catch (MyException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
 		}

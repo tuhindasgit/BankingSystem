@@ -55,6 +55,25 @@ public class CustomerServiceImpl implements CustomerServicee{
 			throw new MyException("Id is not present...invalid");
 		}
 	}
+	
+	@Override
+	public Customer updateCustomer(Integer customerId, String customerName) {
+	
+		final Optional<Customer> customer1 = customerRepo.findById(customerId);
+		System.out.println("in");
+		if(customer1.isPresent())
+		{
+			
+			Customer newCustomer= customer1.get();
+			System.out.println(newCustomer);
+			newCustomer.setName(customerName);
+			
+			return customerRepo.save(newCustomer);
+	}
+		else
+			{
+			throw new MyException("not updated");
+			}}
 	}
 
 

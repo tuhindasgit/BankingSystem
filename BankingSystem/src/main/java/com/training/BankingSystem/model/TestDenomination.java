@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class TestDenomination {
+public class TestDenomination extends BaseEntity{
 
 	@Id
 	private Integer denomination;

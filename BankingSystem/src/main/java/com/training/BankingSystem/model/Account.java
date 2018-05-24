@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 
-public class Account {
+public class Account extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer accountId;

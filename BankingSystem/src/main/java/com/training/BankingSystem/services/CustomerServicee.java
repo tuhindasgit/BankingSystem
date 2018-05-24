@@ -6,5 +6,6 @@ public interface CustomerServicee {
 
 	public Customer createCustomer(Customer customer);
 	public Customer getCustomerDetails(Integer customerId);
+	public Customer updateCustomer(Integer customerId,String customerName);
 	
 }

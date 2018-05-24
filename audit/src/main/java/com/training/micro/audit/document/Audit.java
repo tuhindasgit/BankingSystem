@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,8 +15,9 @@ public class Audit<T> {
 	
 
 	@Id
-	private String eventId;
+	private UUID eventId=UUID.randomUUID();
 	private String eventName;
+	@NotNull
 	private String eventType;
 	private Date eventDate;
 	private String userId;
@@ -24,14 +27,14 @@ public class Audit<T> {
 	/**
 	 * @return the eventId
 	 */
-	public String getEventId() {
+	public UUID getEventId() {
 		return eventId;
 	}
 	/**
 	 * @param eventId the eventId to set
 	 */
-	public void setEventId(String eventId) {
-		this.eventId = UUID.randomUUID().toString();
+	public void setEventId(UUID eventId) {
+		this.eventId =eventId ;
 	}
 	/**
 	 * @return the eventName
@@ -109,10 +112,9 @@ public class Audit<T> {
 	public void setNewValue(T newValue) {
 		this.newValue = newValue;
 	}
-	public Audit(String eventId, String eventName, String eventType, LocalDateTime eventDate, String userId,
+	public Audit( String eventName, String eventType, Date eventDate, String userId,
 			T oldValue, T newValue) {
-		super();
-		this.eventId = eventId;
+		
 		this.eventName = eventName;
 		this.eventType = eventType;
 		this.eventDate = new Date();

@@ -3,7 +3,7 @@ package com.training.BankingSystem.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 @Entity
-public class TestAtmDenominatio {
+public class TestAtmDenominatio extends BaseEntity {
 
 
 	@Id

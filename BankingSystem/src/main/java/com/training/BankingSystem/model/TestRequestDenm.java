@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-public class TestRequestDenm {
+public class TestRequestDenm extends BaseEntity{
 
 	
 	List<Integer> denomination;

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Entity
 
 @Component
-public class Transaction {
+public class Transaction extends BaseEntity{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

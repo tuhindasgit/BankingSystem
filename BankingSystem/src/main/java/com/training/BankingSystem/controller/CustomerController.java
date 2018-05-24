@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,8 +29,8 @@ public class CustomerController {
 	@PostMapping
 	public ResponseEntity<?> addCustomer(@RequestBody final Customer customer) {
 		try {
-			final Customer customer1 = custService.createCustomer(customer);
-			return new ResponseEntity<Customer>(customer1, HttpStatus.CREATED);
+			final Customer customerRes = custService.createCustomer(customer);
+			return new ResponseEntity<Customer>(customerRes, HttpStatus.CREATED);
 		} catch (MyException e) {
 
 			return new ResponseEntity<String>(e.toString(), HttpStatus.NOT_ACCEPTABLE);
@@ -41,14 +42,24 @@ public class CustomerController {
 	@GetMapping(value = "/{customerId}")
 	public ResponseEntity<?> viewCustomer(@PathVariable("customerId") final Integer customerId) {
 		try {
-			final Customer customer2 = custService.getCustomerDetails(customerId);
+			final Customer customerRes = custService.getCustomerDetails(customerId);
 
-			return new ResponseEntity<Customer>(customer2, HttpStatus.OK);
+			return new ResponseEntity<Customer>(customerRes, HttpStatus.OK);
 		} catch (MyException e) {
 
 			return new ResponseEntity<String>(e.toString(), HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
 	
-	
+	@PutMapping(value="/{customerId}/{customerName}")
+	public ResponseEntity<?> updateCustomer(@PathVariable final Integer customerId,@PathVariable final String customerName) {
+		try {
+			final Customer customerRes = custService.updateCustomer(customerId, customerName);
+
+			return new ResponseEntity<Customer>(customerRes, HttpStatus.OK);
+		} catch (MyException e) {
+
+			return new ResponseEntity<String>(e.toString(), HttpStatus.NOT_ACCEPTABLE);
+		}
+	}
 }

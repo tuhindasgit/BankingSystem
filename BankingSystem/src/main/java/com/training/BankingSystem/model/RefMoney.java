@@ -5,7 +5,7 @@ import javax.persistence.Id;
 
 @Entity
 
-public class RefMoney {
+public class RefMoney extends BaseEntity {
 	@Id
 	private Integer denomination;
 
