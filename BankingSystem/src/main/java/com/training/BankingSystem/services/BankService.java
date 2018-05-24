@@ -1,12 +1,15 @@
 package com.training.BankingSystem.services;
 
-import org.springframework.http.ResponseEntity;
-
-import com.training.BankingSystem.model.Bank;
+import com.training.bankingsystem.model.Bank;
 
 public interface BankService {
 
-	public Bank createBank(Bank bank);
-	public Bank getBankDetails(Integer bankId);
-	
-}
+	/*
+	 * creating new bank
+	 */
+	 Bank createBank(Bank bank);
+	 /*
+	  * Retrieve a specific bank
+	  */
+	 Bank getBankDetails(Integer bankId);
+	 }

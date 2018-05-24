@@ -2,7 +2,7 @@ package com.training.BankingSystem.services;
 
 import java.math.BigDecimal;
 
-import com.training.BankingSystem.model.Account;
+import com.training.bankingsystem.model.Account;
 /*
  * Interface that have all the methods related to account Service
  */

@@ -11,15 +11,20 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.training.BankingSystem.helper.BaseEntity;
+/**
+ * 
+ * @author tuhin
+ *
+ */
 @Entity
-
 @Table(name = "bank")
 public class Bank extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer bankId;
 	private BigDecimal amount;
-	/*
+	/**
 	 * mapping between customer and bank
 	 */
 	@OneToMany(targetEntity=Customer.class,mappedBy="bankId")
@@ -34,17 +39,24 @@ public class Bank extends BaseEntity {
 	 */
 	@OneToMany(targetEntity=Account.class,mappedBy="bankId")
 	private List<Account> bankAccountList=new ArrayList<>();
-	
-	public Bank( BigDecimal amount) {
+	/**
+	 * 
+	 * @param amount
+	 */
+	public Bank(final BigDecimal amount) {
 		super();
 		this.amount = amount;
 	}
-
+/**
+ * no parameter constructor
+ */
 public Bank() {
 	super();
 }
-
-public Bank(Integer bankId, BigDecimal amount) {
+/**
+ * constructor with parameter
+ */
+public Bank(final Integer bankId,final BigDecimal amount) {
 	super();
 	this.bankId = bankId;
 	this.amount = amount;
@@ -60,7 +72,7 @@ public Integer getBankId() {
 /**
  * @param bankId the bankId to set
  */
-public void setBankId(Integer bankId) {
+public void setBankId(final Integer bankId) {
 	this.bankId = bankId;
 }
 
@@ -74,7 +86,7 @@ public BigDecimal getAmount() {
 /**
  * @param amount the amount to set
  */
-public void setAmount(BigDecimal amount) {
+public void setAmount(final BigDecimal amount) {
 	this.amount = amount;
 }
 

@@ -10,11 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
-/*
+
+import com.training.BankingSystem.helper.BaseEntity;
+/**
  * Entity class for Customer
  */
 @Entity
-
 @Component
 public class Customer extends BaseEntity {
 	@Id
@@ -23,7 +24,7 @@ public class Customer extends BaseEntity {
 	private String name;
 	private Integer pin;
 	private Integer bankId;
-	/*
+	/**
 	 * mapping of Transaction
 	 */
 	@OneToMany(targetEntity=Account.class,mappedBy="customerId")
@@ -33,15 +34,18 @@ public class Customer extends BaseEntity {
 	 */
 	@OneToMany(targetEntity=Transaction.class,mappedBy="customerId")
 	private List<Transaction> transactionList=new ArrayList<>();
-	/*
+	/**
 	 * parameterized constructor
 	 */
-	public Customer(String name, Integer pin, Integer bankId) {
+	public Customer(final String name, final Integer pin,final Integer bankId) {
 		super();
 		this.name = name;
 		this.pin = pin;
 		this.bankId = bankId;
 	}
+	/**
+	 * no parameter constructor
+	 */
 	public Customer() {
 		super();
 	}
@@ -54,7 +58,7 @@ public class Customer extends BaseEntity {
 	/**
 	 * @param customerId the customerId to set
 	 */
-	public void setCustomerId(Integer customerId) {
+	public void setCustomerId(final Integer customerId) {
 		this.customerId = customerId;
 	}
 	/**
@@ -66,7 +70,7 @@ public class Customer extends BaseEntity {
 	/**
 	 * @param name the name to set
 	 */
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 	/**
@@ -78,7 +82,7 @@ public class Customer extends BaseEntity {
 	/**
 	 * @param pin the pin to set
 	 */
-	public void setPin(Integer pin) {
+	public void setPin(final Integer pin) {
 		this.pin = pin;
 	}
 	/**
@@ -90,9 +94,8 @@ public class Customer extends BaseEntity {
 	/**
 	 * @param bankId the bankId to set
 	 */
-	public void setBankId(Integer bankId) {
+	public void setBankId(final Integer bankId) {
 		this.bankId = bankId;
 	}
-	
 	
 }

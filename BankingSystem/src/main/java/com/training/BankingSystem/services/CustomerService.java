@@ -1,9 +1,19 @@
 package com.training.BankingSystem.services;
 
-import com.training.BankingSystem.model.Customer;
+import com.training.bankingsystem.model.Customer;
 
+/**
+ * @author tuhin
+ *
+ */
 public interface CustomerService {
 
-	public Customer createCustomer(Customer customer);
-	public Customer getCustomerDetails(Customer customer);
+	/**
+	 * Interface for creating a new customer
+	 */
+	Customer createCustomer(Customer customer);
+	
+	public Customer getCustomerDetails(Integer customerId);
+	public Customer updateCustomer(Integer customerId,String customerName);
+	
 }

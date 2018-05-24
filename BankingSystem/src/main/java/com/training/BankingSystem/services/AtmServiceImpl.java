@@ -6,14 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.training.BankingSystem.exception.MyException;
-import com.training.BankingSystem.model.ATM;
-import com.training.BankingSystem.model.Account;
-import com.training.BankingSystem.model.Bank;
-import com.training.BankingSystem.model.Customer;
-import com.training.BankingSystem.repository.AccountRepo;
-import com.training.BankingSystem.repository.AtmRepo;
-import com.training.BankingSystem.repository.BankRepo;
+import com.training.bankingsystem.exception.MyException;
+import com.training.bankingsystem.model.ATM;
+import com.training.bankingsystem.model.Account;
+import com.training.bankingsystem.model.Bank;
+import com.training.bankingsystem.model.Customer;
+import com.training.bankingsystem.repository.AccountRepo;
+import com.training.bankingsystem.repository.AtmRepo;
+import com.training.bankingsystem.repository.BankRepo;
 
 /**
  * @author trainee

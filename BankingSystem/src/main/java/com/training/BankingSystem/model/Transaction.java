@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.stereotype.Component;
+
+import com.training.BankingSystem.helper.BaseEntity;
 @Entity
 
 @Component
@@ -20,7 +22,7 @@ public class Transaction extends BaseEntity{
 	private Integer accountId;
 	private BigDecimal ammount;
 	private String transactionType;
-/*
+/**
  * Parameterized constructor
  * 
  */
@@ -33,7 +35,7 @@ public class Transaction extends BaseEntity{
 		this.ammount = ammount;
 		this.transactionType = transactionType;
 	} 
-	/*
+	/**
 	 * no parameter constructor
 	 */
 	public Transaction() {

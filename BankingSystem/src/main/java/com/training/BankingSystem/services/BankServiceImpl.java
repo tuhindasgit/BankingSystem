@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
-import com.training.BankingSystem.exception.MyException;
-import com.training.BankingSystem.model.Bank;
-import com.training.BankingSystem.repository.BankRepo;
+import com.training.bankingsystem.exception.MyException;
+import com.training.bankingsystem.model.Bank;
+import com.training.bankingsystem.repository.BankRepo;
 /*
  * Service class for bank service Implementation
  */
@@ -18,12 +18,9 @@ public class BankServiceImpl implements BankService {
 
 	@Autowired
 	BankRepo bankRepo;
-	
-@Autowired
-Environment environment;
 /*
- * (non-Javadoc)
- * @see com.training.BankingSystem.services.BankService#createBank(com.training.BankingSystem.model.Bank)
+ * creating new bank 
+ * sending bank object
  */
 	@Override
 	public Bank createBank(final Bank bank) {
@@ -34,30 +31,21 @@ Environment environment;
 			return bankRepo.save(bank);
 		}
 	}
-
+/*
+ * Retrieve a specific BankDetails
+ * @param bankId
+ * @return Bank Object
+  */
 	@Override
 	public Bank getBankDetails(final Integer bankId) {
-		
 		final Optional<Bank> bank = bankRepo.findById(bankId);
 		if(bank.isPresent())
 		{
-		
-		return bank.get();
+				return bank.get();
 		}
 		else
 		{
-			throw new MyException(environment.getProperty("noDataFound"));
+			throw new MyException("noDataFound");
 		}
 	}
-	
-	public Bank saveBank(final Bank bank)
-	{
-		return bankRepo.save(bank);
-	}
-	
-	public Optional<Bank> findById(Integer id)
-	{
-		return bankRepo.findById(id);
-	}
- 
 }

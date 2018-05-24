@@ -2,8 +2,8 @@ package com.training.BankingSystem.services;
 
 import java.util.List;
 
-import com.training.BankingSystem.model.Account;
-import com.training.BankingSystem.model.Transaction;
+import com.training.bankingsystem.model.Account;
+import com.training.bankingsystem.model.Transaction;
 
 public interface TransactionService {
 

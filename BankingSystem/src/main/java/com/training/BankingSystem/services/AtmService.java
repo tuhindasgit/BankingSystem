@@ -2,7 +2,7 @@ package com.training.BankingSystem.services;
 
 import java.math.BigDecimal;
 
-import com.training.BankingSystem.model.ATM;
+import com.training.bankingsystem.model.ATM;
 
 public interface AtmService {
 

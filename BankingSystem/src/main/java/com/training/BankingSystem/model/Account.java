@@ -9,12 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.training.BankingSystem.helper.BaseEntity;
 /*
  * @Tuhin Das
  * Account Entity class
  */
 @Entity
-
 public class Account extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,12 +23,12 @@ public class Account extends BaseEntity {
 	private Integer customerId;
 	private Integer bankId;
 	private BigDecimal ammount;
-/*
+/**
  * Mapping with Transaction
  */
 	@OneToMany(targetEntity=Transaction.class,mappedBy="accountId")
 	private List<Transaction> accountTransactionList=new ArrayList<>(); 
-	/*
+	/**
 	 * parameterized constructor
 	 */
 	public Account(final Integer customerId,final Integer bankId,final BigDecimal ammount) {
@@ -36,6 +37,9 @@ public class Account extends BaseEntity {
 		this.bankId = bankId;
 		this.ammount = ammount;
 	}
+	/**
+	 * no-parameter constructor
+	 */
 	public Account() {
 		super();
 	}
@@ -48,7 +52,7 @@ public class Account extends BaseEntity {
 	/**
 	 * @param accountId the accountId to set
 	 */
-	public void setAccountId(Integer accountId) {
+	public void setAccountId(final Integer accountId) {
 		this.accountId = accountId;
 	}
 	/**
@@ -60,7 +64,7 @@ public class Account extends BaseEntity {
 	/**
 	 * @param customerId the customerId to set
 	 */
-	public void setCustomerId(Integer customerId) {
+	public void setCustomerId(final Integer customerId) {
 		this.customerId = customerId;
 	}
 	/**
@@ -72,7 +76,7 @@ public class Account extends BaseEntity {
 	/**
 	 * @param bankId the bankId to set
 	 */
-	public void setBankId(Integer bankId) {
+	public void setBankId(final Integer bankId) {
 		this.bankId = bankId;
 	}
 	/**
@@ -84,7 +88,7 @@ public class Account extends BaseEntity {
 	/**
 	 * @param ammount the ammount to set
 	 */
-	public void setAmmount(BigDecimal ammount) {
+	public void setAmmount(final BigDecimal ammount) {
 		this.ammount = ammount;
 	}
 	/**
@@ -96,7 +100,7 @@ public class Account extends BaseEntity {
 	/**
 	 * @param accountTransactionList the accountTransactionList to set
 	 */
-	public void setAccountTransactionList(List<Transaction> accountTransactionList) {
+	public void setAccountTransactionList(final List<Transaction> accountTransactionList) {
 		this.accountTransactionList = accountTransactionList;
 	}
 

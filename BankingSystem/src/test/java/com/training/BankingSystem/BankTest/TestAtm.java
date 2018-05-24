@@ -13,15 +13,15 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.training.BankingSystem.exception.MyException;
-import com.training.BankingSystem.model.ATM;
-import com.training.BankingSystem.model.Bank;
-import com.training.BankingSystem.model.Customer;
-import com.training.BankingSystem.repository.AtmRepo;
-import com.training.BankingSystem.repository.BankRepo;
-import com.training.BankingSystem.repository.CustomerRepo;
-import com.training.BankingSystem.services.AtmServiceImpl;
-import com.training.BankingSystem.services.CustomerServiceImpl;
+import com.training.bankingsystem.exception.MyException;
+import com.training.bankingsystem.model.ATM;
+import com.training.bankingsystem.model.Bank;
+import com.training.bankingsystem.model.Customer;
+import com.training.bankingsystem.repository.AtmRepo;
+import com.training.bankingsystem.repository.BankRepo;
+import com.training.bankingsystem.repository.CustomerRepo;
+import com.training.bankingsystem.services.AtmServiceImpl;
+import com.training.bankingsystem.services.CustomerServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestAtm {

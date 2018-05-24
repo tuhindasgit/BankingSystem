@@ -6,22 +6,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-@Entity
 
+import com.training.BankingSystem.helper.BaseEntity;
+/**
+ * @author trainee
+ *
+ */
+@Entity
 public class ATM extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer ATMId;
 	private BigDecimal ammount;
 	private Integer bankId;
-	/*
+	/**
 	 * Parameterized Constructor 
 	 */
-	public ATM(BigDecimal ammount, Integer bankId) {
+	public ATM(final BigDecimal ammount, final Integer bankId) {
 		super();
 		this.ammount = ammount;
 		this.bankId = bankId;
 	}
+	/**
+	 * no parameter constructor
+	 */
 	public ATM() {
 		super();
 	}
@@ -34,7 +42,7 @@ public class ATM extends BaseEntity {
 	/**
 	 * @param aTMId the aTMId to set
 	 */
-	public void setATMId(Integer aTMId) {
+	public void setATMId(final Integer aTMId) {
 		ATMId = aTMId;
 	}
 	/**
@@ -46,7 +54,7 @@ public class ATM extends BaseEntity {
 	/**
 	 * @param ammount the ammount to set
 	 */
-	public void setAmmount(BigDecimal ammount) {
+	public void setAmmount(final BigDecimal ammount) {
 		this.ammount = ammount;
 	}
 	/**
@@ -58,7 +66,7 @@ public class ATM extends BaseEntity {
 	/**
 	 * @param bankId the bankId to set
 	 */
-	public void setBankId(Integer bankId) {
+	public void setBankId(final Integer bankId) {
 		this.bankId = bankId;
 	}
 	

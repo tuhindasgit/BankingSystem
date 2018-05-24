@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.training.BankingSystem.exception.MyException;
-import com.training.BankingSystem.model.ATM;
-import com.training.BankingSystem.services.AtmServiceImpl;
+import com.training.bankingsystem.exception.MyException;
+import com.training.bankingsystem.model.ATM;
+import com.training.bankingsystem.services.AtmServiceImpl;
 /*
  * RestController for atmController
  */

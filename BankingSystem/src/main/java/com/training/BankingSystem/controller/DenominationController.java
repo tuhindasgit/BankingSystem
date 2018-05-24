@@ -1,37 +1,30 @@
 package com.training.BankingSystem.controller;
 
-import java.math.BigDecimal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.training.BankingSystem.model.Bank;
-import com.training.BankingSystem.model.BankDenm;
-import com.training.BankingSystem.model.TestRequestDenm;
-import com.training.BankingSystem.services.BankDenmServiceImpl;
-import com.training.BankingSystem.services.TestAtmDenmService;
-import com.training.BankingSystem.services.TestBankDenmService;
-import com.training.BankingSystem.services.TestDenmService;
+import com.training.bankingsystem.helper.RequestDenm;
+import com.training.bankingsystem.services.DenmService;
 
 @RestController
 @RequestMapping(value="/denomination")
 public class DenominationController {
 
 	@Autowired
-	TestBankDenmService bankdenm;
+	BankDenmService bankdenm;
 	@Autowired
-	TestDenmService denm;
+	DenmService denm;
 	@Autowired
-	TestAtmDenmService atmDenm;
+	AtmDenmService atmDenm;
 	
 	@PostMapping
-	public ResponseEntity<?> addDenomination1(@RequestBody final TestRequestDenm request) {
+	public ResponseEntity<?> addDenomination1(@RequestBody final 
+			RequestDenm request) {
 		
 		denm.addDenomination(request.getDenomination());
 		

@@ -17,11 +17,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.training.BankingSystem.exception.MyException;
-import com.training.BankingSystem.model.Bank;
-import com.training.BankingSystem.repository.BankRepo;
-import com.training.BankingSystem.services.BankService;
-import com.training.BankingSystem.services.BankServiceImpl;
+import com.training.bankingsystem.exception.MyException;
+import com.training.bankingsystem.model.Bank;
+import com.training.bankingsystem.repository.BankRepo;
+import com.training.bankingsystem.services.BankService;
+import com.training.bankingsystem.services.BankServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestBank {

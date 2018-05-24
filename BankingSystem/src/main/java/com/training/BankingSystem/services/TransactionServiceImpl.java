@@ -7,9 +7,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.training.BankingSystem.model.Account;
-import com.training.BankingSystem.model.Transaction;
-import com.training.BankingSystem.repository.TransactionRepo;
+import com.training.bankingsystem.model.Account;
+import com.training.bankingsystem.model.Transaction;
+import com.training.bankingsystem.repository.TransactionRepo;
 /*
  * Services for Transactional services
  */
