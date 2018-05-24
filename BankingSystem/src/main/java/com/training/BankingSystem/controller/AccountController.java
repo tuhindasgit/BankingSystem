@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.training.bankingsystem.exception.MyException;
-import com.training.bankingsystem.model.Account;
-import com.training.bankingsystem.services.AccountServiceImpl;
+import com.training.BankingSystem.exception.MyException;
+import com.training.BankingSystem.model.Account;
+import com.training.BankingSystem.services.AccountServiceImpl;
 /*
  * Account controller
  */

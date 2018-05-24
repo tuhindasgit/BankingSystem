@@ -1,7 +1,11 @@
 package com.training.BankingSystem.helper;
 
 import javax.persistence.MappedSuperclass;
-
+/**
+ * 
+ * @author tuhin
+ *
+ */
 @MappedSuperclass
 public class BaseEntity {
 
@@ -16,15 +20,20 @@ public class BaseEntity {
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(String userId) {
+	public void setUserId(final String userId) {
 		this.userId = userId;
 	}
-
-	public BaseEntity(String userId) {
+/**
+ * 
+ * @param userId
+ */
+	public BaseEntity(final String userId) {
 		super();
 		this.userId = userId;
 	}
-
+/**
+ * no parameter constructor
+ */
 	public BaseEntity() {
 		super();
 	}

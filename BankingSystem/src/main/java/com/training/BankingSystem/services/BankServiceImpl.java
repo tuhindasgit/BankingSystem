@@ -2,14 +2,12 @@ package com.training.BankingSystem.services;
 
 import java.util.Optional;
 
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
-import com.training.bankingsystem.exception.MyException;
-import com.training.bankingsystem.model.Bank;
-import com.training.bankingsystem.repository.BankRepo;
+import com.training.BankingSystem.exception.MyException;
+import com.training.BankingSystem.model.Bank;
+import com.training.BankingSystem.repository.BankRepo;
 /*
  * Service class for bank service Implementation
  */

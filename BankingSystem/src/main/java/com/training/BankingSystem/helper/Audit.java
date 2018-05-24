@@ -2,12 +2,14 @@ package com.training.BankingSystem.helper;
 
 import java.util.Date;
 import java.util.UUID;
-
+/**
+ * 
+ * @author trainee
+ *
+ * @param <T>
+ */
 
 public class Audit<T> {
-	
-	
-
 
 	private UUID eventId=UUID.randomUUID();
 	private String eventName;
@@ -25,7 +27,7 @@ public class Audit<T> {
 	/**
 	 * @param eventId the eventId to set
 	 */
-	public void setEventId(UUID eventId) {
+	public void setEventId(final UUID eventId) {
 		this.eventId = eventId;
 	}
 	/**
@@ -37,7 +39,7 @@ public class Audit<T> {
 	/**
 	 * @param eventName the eventName to set
 	 */
-	public void setEventName(String eventName) {
+	public void setEventName(final String eventName) {
 		this.eventName = eventName;
 	}
 	/**
@@ -49,7 +51,7 @@ public class Audit<T> {
 	/**
 	 * @param eventType the eventType to set
 	 */
-	public void setEventType(String eventType) {
+	public void setEventType(final String eventType) {
 		this.eventType = eventType;
 	}
 	/**
@@ -61,7 +63,7 @@ public class Audit<T> {
 	/**
 	 * @param eventDate the eventDate to set
 	 */
-	public void setEventDate(Date eventDate) {
+	public void setEventDate(final Date eventDate) {
 		this.eventDate = eventDate;
 	}
 	/**
@@ -73,7 +75,7 @@ public class Audit<T> {
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(String userId) {
+	public void setUserId(final String userId) {
 		this.userId = userId;
 	}
 	/**
@@ -85,7 +87,7 @@ public class Audit<T> {
 	/**
 	 * @param oldValue the oldValue to set
 	 */
-	public void setOldValue(T oldValue) {
+	public void setOldValue(final T oldValue) {
 		this.oldValue = oldValue;
 	}
 	/**
@@ -97,11 +99,21 @@ public class Audit<T> {
 	/**
 	 * @param newValue the newValue to set
 	 */
-	public void setNewValue(T newValue) {
+	public void setNewValue(final T newValue) {
 		this.newValue = newValue;
 	}
-	public Audit(UUID eventId, String eventName, String eventType, Date eventDate, String userId, T oldValue,
-			T newValue) {
+	/**
+	 * 
+	 * @param eventId
+	 * @param eventName
+	 * @param eventType
+	 * @param eventDate
+	 * @param userId
+	 * @param oldValue
+	 * @param newValue
+	 */
+	public Audit(final UUID eventId, final String eventName, final String eventType, final Date eventDate, final String userId, final T oldValue,
+			final T newValue) {
 		super();
 		this.eventId = eventId;
 		this.eventName = eventName;
@@ -111,6 +123,9 @@ public class Audit<T> {
 		this.oldValue = oldValue;
 		this.newValue = newValue;
 	}
+	/**
+	 * no parameter constructor
+	 */
 	public Audit() {
 		super();
 	}

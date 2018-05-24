@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.training.bankingsystem.exception.MyException;
-import com.training.bankingsystem.model.Bank;
-import com.training.bankingsystem.services.BankServiceImpl;
+import com.training.BankingSystem.exception.MyException;
+import com.training.BankingSystem.model.Bank;
+import com.training.BankingSystem.services.BankServiceImpl;
 /*
  * Rest Controller for bank services
  */
