@@ -125,12 +125,5 @@ public class Audit<T> {
 	public Audit() {
 		super();
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "audit [eventId=" + eventId + ", eventName=" + eventName + ", eventType=" + eventType
-				+ ", eventDate=" + eventDate + ", userId=" + userId +  "]";
-	}
+
 }
