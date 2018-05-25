@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.training.bankingsystem.exception.MyException;
-import com.training.bankingsystem.model.Transaction;
-import com.training.bankingsystem.services.TransactionService;
+import com.training.BankingSystem.exception.MyException;
+import com.training.BankingSystem.model.Transaction;
+import com.training.BankingSystem.services.TransactionService;
 /*
  * Rest Controller for transaction Service
  */

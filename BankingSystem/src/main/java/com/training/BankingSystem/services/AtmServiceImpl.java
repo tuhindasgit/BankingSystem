@@ -6,14 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.training.bankingsystem.exception.MyException;
-import com.training.bankingsystem.model.ATM;
-import com.training.bankingsystem.model.Account;
-import com.training.bankingsystem.model.Bank;
-import com.training.bankingsystem.model.Customer;
-import com.training.bankingsystem.repository.AccountRepo;
-import com.training.bankingsystem.repository.AtmRepo;
-import com.training.bankingsystem.repository.BankRepo;
+import com.training.BankingSystem.exception.MyException;
+import com.training.BankingSystem.model.ATM;
+import com.training.BankingSystem.model.Bank;
+import com.training.BankingSystem.repository.AtmRepo;
 
 /**
  * @author trainee
@@ -25,23 +21,21 @@ public class AtmServiceImpl implements AtmService {
 
 	@Autowired
 	AtmRepo atmRepo;
+
 	@Autowired
-	AtmServiceImpl atmservice;
+	BankService bankService;
 	@Autowired
-	BankRepo bankRepo;
-	@Autowired
-	AccountRepo accountRepo;
-	
-	/*
-	 * (non-Javadoc)
-	 * @see com.training.BankingSystem.services.AtmService#createBank(com.training.BankingSystem.model.ATM)
+	AccountService accountService;
+
+	/**
+	 * creating a Atm ,Here we are matching that related bank is present or not
 	 */
 	@Override
 	public ATM createBank(final ATM atm) throws MyException{
 		
 		final Integer id=atm.getBankId();
-		final Optional<Bank> bank1=bankRepo.findById(id);
-		if(bank1.isPresent())
+		final Optional<Bank> bankOption=bankService.findById(id);
+		if(bankOption.isPresent())
 		{
 		return atmRepo.save(atm);
 		
@@ -52,8 +46,9 @@ public class AtmServiceImpl implements AtmService {
 			}
 		}
 	
-	/* (non-Javadoc)
-	 * @see com.training.BankingSystem.services.AtmService#addMoneyFromBank(java.math.BigDecimal, java.lang.Integer)
+	/**
+	 * takes the money or amount that will transfer from bank to a specific atm
+	 * atm id provided to see exact Atm,where money will be deposited
 	 */
 	@Override
 	public ATM addMoneyFromBank(final BigDecimal deposit, final Integer atmId) {
@@ -62,14 +57,14 @@ public class AtmServiceImpl implements AtmService {
 		if(atm1.isPresent())
 		{
 			final Integer id=atm1.get().getBankId();
-			final Optional<Bank> bank1=bankRepo.findById(id);
+			final Optional<Bank> bank1=bankService.findById(id);
 			final Bank bank2=bank1.get();
 				if(deposit.intValue() < bank2.getAmount().intValue())
 				{
 					atm1.get().setAmmount(atm1.get().getAmmount().add(deposit));
 					atmRepo.save(atm1.get());
 					bank2.setAmount(bank2.getAmount().subtract(deposit));
-					bankRepo.save(bank2);
+					bankService.createBank(bank2);
 					return atm1.get();
 				}
 				else

@@ -5,29 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.training.bankingsystem.model.Denomination;
-import com.training.bankingsystem.repository.DenmRepo;
+import com.training.BankingSystem.model.Denomination;
+import com.training.BankingSystem.repository.DenmRepo;
+
+/**
+ * @authortuhin
+ *
+ */
 @Service
 public class DenmServiceImpl implements DenmService {
 
 	@Autowired
-	DenmRepo refMoneyRepog;
+	DenmRepo denmRepo;
+	
+	private Denomination testval;
+	/**
+	 * method that will add denomination of whole banking system
+	 */
 	@Override
-	public void addDenomination(List<Integer> denomination) {
+	public void addDenomination(final List<Integer> denomination) {
 		
 		for(Integer value:denomination) {
-			
-		if(!refMoneyRepog.findById(value).isPresent())
+		if(!denmRepo.findById(value).isPresent())
 		{
-			Denomination testval=new Denomination(value);
-			refMoneyRepog.save(testval);
+			testval=new Denomination(value);
+			denmRepo.save(testval);
 		}
-			
-		}
-		
-		
-	}
+			}
+			}
 
-	
-	
-}
+	}

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.training.bankingsystem.helper.RequestDenm;
-import com.training.bankingsystem.services.DenmService;
+import com.training.BankingSystem.helper.RequestDenm;
+import com.training.BankingSystem.services.DenmService;
 
 @RestController
 @RequestMapping(value="/denomination")

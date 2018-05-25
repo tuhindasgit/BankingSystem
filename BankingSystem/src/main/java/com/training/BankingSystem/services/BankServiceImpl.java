@@ -2,13 +2,15 @@ package com.training.BankingSystem.services;
 
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.training.BankingSystem.exception.MyException;
 import com.training.BankingSystem.model.Bank;
 import com.training.BankingSystem.repository.BankRepo;
-/*
+/**
  * Service class for bank service Implementation
  */
 @Service
@@ -16,7 +18,8 @@ public class BankServiceImpl implements BankService {
 
 	@Autowired
 	BankRepo bankRepo;
-/*
+	private static final Logger log=LoggerFactory.getLogger(BankServiceImpl.class);
+/**
  * creating new bank 
  * sending bank object
  */
@@ -26,7 +29,9 @@ public class BankServiceImpl implements BankService {
 		if (bank.getAmount().intValue()<0) {
 			throw new MyException("invalid input,provide valid ammount");
 		} else {
+			log.info("customer Created");
 			return bankRepo.save(bank);
+			
 		}
 	}
 /*
@@ -39,11 +44,20 @@ public class BankServiceImpl implements BankService {
 		final Optional<Bank> bank = bankRepo.findById(bankId);
 		if(bank.isPresent())
 		{
+			log.info("customer Details:  " +bank.get());
 				return bank.get();
 		}
 		else
 		{
-			throw new MyException("noDataFound");
+					throw new MyException("noDataFound");
 		}
+	}
+	/**
+	 * that will find the bank object present or not
+	 */
+	@Override
+	public Optional<Bank> findById(Integer bankId) {
+		
+		return bankRepo.findById(bankId);
 	}
 }

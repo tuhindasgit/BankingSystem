@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.training.bankingsystem.exception.MyException;
-import com.training.bankingsystem.model.Customer;
-import com.training.bankingsystem.services.CustomerServiceImpl;
+import com.training.BankingSystem.exception.MyException;
+import com.training.BankingSystem.model.Customer;
+import com.training.BankingSystem.services.CustomerServiceImpl;
 /*
  * Rest Controller for Customer Service
  */
