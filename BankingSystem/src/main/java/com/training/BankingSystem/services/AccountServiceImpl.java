@@ -6,18 +6,17 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.training.bankingsystem.exception.MyException;
-import com.training.bankingsystem.model.ATM;
-import com.training.bankingsystem.model.Account;
-import com.training.bankingsystem.model.Bank;
-import com.training.bankingsystem.model.Customer;
-import com.training.bankingsystem.repository.AccountRepo;
-import com.training.bankingsystem.repository.AtmRepo;
-import com.training.bankingsystem.repository.BankRepo;
-import com.training.bankingsystem.repository.CustomerRepo;
+import com.training.BankingSystem.exception.MyException;
+import com.training.BankingSystem.model.ATM;
+import com.training.BankingSystem.model.Account;
+import com.training.BankingSystem.model.Bank;
+import com.training.BankingSystem.model.Customer;
+import com.training.BankingSystem.repository.AccountRepo;
+import com.training.BankingSystem.repository.AtmRepo;
+import com.training.BankingSystem.repository.BankRepo;
+import com.training.BankingSystem.repository.CustomerRepo;
 /*
  * Implementation of all account service class
  */
@@ -106,8 +105,8 @@ public class AccountServiceImpl implements AccountService {
 						final BigDecimal bankAmmount = bank1.getAmount().subtract(withdrawl);
 						bank1.setAmount(bankAmmount);
 						bankRepo.save(bank1);
-						transervice.createTransaction(acnt1, "Debit");
-						bankDenmService.withdrawDenm(withdrawl, bankId);
+						//transervice.createTransaction(acnt1, "Debit");
+						//bankDenmService.withdrawDenm(withdrawl, bankId);
 					} else {
 						throw new MyException("you are trying to withdraw invalid ammount");
 					}
@@ -130,7 +129,7 @@ public class AccountServiceImpl implements AccountService {
 						final BigDecimal accountMoney = acnt1.getAmmount().subtract(withdrawl);
 						acnt1.setAmmount(accountMoney);
 						accountRepo.save(acnt1);
-						transervice.createTransaction(acnt1, "Debit");
+						//transervice.createTransaction(acnt1, "Debit");
 						
 
 					} else {
@@ -178,9 +177,9 @@ public class AccountServiceImpl implements AccountService {
 				final BigDecimal bankAmmount = bank2.getAmount().add(deposit);
 				bank2.setAmount(bankAmmount);
 				bankRepo.save(bank2);
-				transervice.createTransaction(acnt2, "Credit");
+				//transervice.createTransaction(acnt2, "Credit");
 				System.out.println("inside                  ");
-				bankDenmService.depositDemn(deposit, bankId);
+				//bankDenmService.depositDemn(deposit, bankId);
 			System.out.println("outside                   ");	
 				return acnt2;
 

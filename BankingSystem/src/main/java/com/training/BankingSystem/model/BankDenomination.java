@@ -2,14 +2,12 @@ package com.training.BankingSystem.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
-import com.training.BankingSystem.helper.BaseEntity;
 /**
  * @author tuhin
  *
  */
 @Entity
-public class BankDenomination extends BaseEntity {
+public class BankDenomination{
 
 
 	@Id

@@ -33,5 +33,10 @@ public class DenmServiceImpl implements DenmService {
 		}
 			}
 			}
+	@Override
+	public List<Denomination> denominationList() {
+		
+		return denmRepo.findAll();
+	}
 
 	}

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.training.BankingSystem.helper.RequestDenm;
+import com.training.BankingSystem.services.BankDenmService;
 import com.training.BankingSystem.services.DenmService;
 
 @RestController
@@ -19,8 +20,8 @@ public class DenominationController {
 	BankDenmService bankdenm;
 	@Autowired
 	DenmService denm;
-	@Autowired
-	AtmDenmService atmDenm;
+	/*@Autowired
+	AtmDenmService atmDenm;*/
 	
 	@PostMapping
 	public ResponseEntity<?> addDenomination1(@RequestBody final 
@@ -28,8 +29,8 @@ public class DenominationController {
 		
 		denm.addDenomination(request.getDenomination());
 		
-		bankdenm.createBankDenm(request.getDenomination(),request.getBankId());
-		atmDenm.createAtmDenm(request.getDenomination(),request.getAtmId());
+		bankdenm.createBankDenomination(request.getDenomination(),request.getBankId());
+		//atmDenm.createAtmDenm(request.getDenomination(),request.getAtmId());
 		return new ResponseEntity<String>("created", HttpStatus.CREATED);
 }
 }
