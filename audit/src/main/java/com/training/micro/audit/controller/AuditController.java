@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.training.micro.audit.document.Audit;
+import com.training.micro.audit.exception.AuditException;
 import com.training.micro.audit.service.AuditService;
 
 @RestController
@@ -23,9 +24,15 @@ public class AuditController {
 	AuditService auditservice;
 	@PostMapping
 	public ResponseEntity<?> addAudit(@RequestBody final Audit audit) {
+		try
+		{
 		Audit auditResult=auditservice.createAudit(audit);
 		return new ResponseEntity<Audit>(auditResult, HttpStatus.CREATED);
-
+		}
+		catch(AuditException e)
+		{
+			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
+		}
 }
 	@GetMapping
 	public ResponseEntity<?> viewAudit() {
