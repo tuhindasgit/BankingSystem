@@ -45,11 +45,11 @@ public class CustomerServiceImpl implements CustomerService{
  */
 	@Override
 	public Customer getCustomerDetails(final Integer customerId) {
-		final Optional<Customer> customer1 = customerRepo.findById(customerId);
-		if(customer1.isPresent())
+		final Optional<Customer> customerOption = customerRepo.findById(customerId);
+		if(customerOption.isPresent())
 		{
 		
-	return customer1.get();
+	return customerOption.get();
 		}
 		else
 		{
@@ -60,12 +60,12 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public Customer updateCustomer(Integer customerId, String customerName) {
 	
-		final Optional<Customer> customer1 = customerRepo.findById(customerId);
+		final Optional<Customer> customerOption = customerRepo.findById(customerId);
 		System.out.println("in");
-		if(customer1.isPresent())
+		if(customerOption.isPresent())
 		{
 			
-			Customer newCustomer= customer1.get();
+			Customer newCustomer= customerOption.get();
 			System.out.println(newCustomer);
 			newCustomer.setName(customerName);
 			
