@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -14,13 +13,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.training.bankingsystem.exception.MyException;
-import com.training.bankingsystem.model.Bank;
-import com.training.bankingsystem.model.Customer;
-import com.training.bankingsystem.repository.BankRepo;
-import com.training.bankingsystem.repository.CustomerRepo;
-import com.training.bankingsystem.services.BankServiceImpl;
-import com.training.bankingsystem.services.CustomerServiceImpl;
+import com.training.BankingSystem.exception.MyException;
+import com.training.BankingSystem.model.Bank;
+import com.training.BankingSystem.model.Customer;
+import com.training.BankingSystem.repository.BankRepo;
+import com.training.BankingSystem.repository.CustomerRepo;
+import com.training.BankingSystem.services.CustomerServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestCustomer {

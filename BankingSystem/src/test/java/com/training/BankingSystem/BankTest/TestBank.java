@@ -1,11 +1,6 @@
 package com.training.BankingSystem.BankTest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.any;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
@@ -17,11 +12,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.training.bankingsystem.exception.MyException;
-import com.training.bankingsystem.model.Bank;
-import com.training.bankingsystem.repository.BankRepo;
-import com.training.bankingsystem.services.BankService;
-import com.training.bankingsystem.services.BankServiceImpl;
+import com.training.BankingSystem.exception.MyException;
+import com.training.BankingSystem.model.Bank;
+import com.training.BankingSystem.repository.BankRepo;
+import com.training.BankingSystem.services.BankServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestBank {

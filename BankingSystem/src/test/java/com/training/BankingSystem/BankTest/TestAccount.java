@@ -13,14 +13,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.training.bankingsystem.model.ATM;
-import com.training.bankingsystem.model.Account;
-import com.training.bankingsystem.model.Bank;
-import com.training.bankingsystem.model.Customer;
-import com.training.bankingsystem.repository.AccountRepo;
-import com.training.bankingsystem.repository.BankRepo;
-import com.training.bankingsystem.repository.CustomerRepo;
-import com.training.bankingsystem.services.AccountServiceImpl;
+import com.training.BankingSystem.model.Account;
+import com.training.BankingSystem.model.Bank;
+import com.training.BankingSystem.model.Customer;
+import com.training.BankingSystem.repository.AccountRepo;
+import com.training.BankingSystem.repository.BankRepo;
+import com.training.BankingSystem.repository.CustomerRepo;
+import com.training.BankingSystem.services.AccountServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestAccount {
