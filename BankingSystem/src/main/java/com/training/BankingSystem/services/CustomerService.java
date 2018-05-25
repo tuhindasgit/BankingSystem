@@ -23,7 +23,8 @@ public interface CustomerService {
 	 * @param customerId
 	 * @param customerName
 	 * @return Customer
+	 * @throws CloneNotSupportedException 
 	 */
-	public Customer updateCustomer(Integer customerId,String customerName);
+	public Customer updateCustomer(Integer customerId,String customerName) throws CloneNotSupportedException;
 	
 }

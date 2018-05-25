@@ -17,7 +17,7 @@ import com.training.BankingSystem.helper.BaseEntity;
  */
 @Entity
 @Component
-public class Customer extends BaseEntity {
+public class Customer extends BaseEntity implements Cloneable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private Integer customerId;
@@ -98,4 +98,7 @@ public class Customer extends BaseEntity {
 		this.bankId = bankId;
 	}
 	
+	public Customer clone() throws CloneNotSupportedException {
+		return (Customer)super.clone();
+	}
 }

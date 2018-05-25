@@ -1,11 +1,14 @@
 package com.training.BankingSystem.services;
 
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.training.BankingSystem.exception.MyException;
+import com.training.BankingSystem.helper.Audit;
+import com.training.BankingSystem.helper.BankEnum;
 import com.training.BankingSystem.model.Bank;
 import com.training.BankingSystem.model.Customer;
 import com.training.BankingSystem.repository.CustomerRepo;
@@ -20,6 +23,9 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	@Autowired
 	BankService bankservice;
+	
+	@Autowired
+	AuditService auditService;
 
 	/**
 	 * 
@@ -58,17 +64,29 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 	
 	@Override
-	public Customer updateCustomer(Integer customerId, String customerName) {
+	public Customer updateCustomer(Integer customerId, String customerName) throws CloneNotSupportedException {
+	
 	
 		final Optional<Customer> customerOption = customerRepo.findById(customerId);
-		System.out.println("in");
+
 		if(customerOption.isPresent())
 		{
 			
 			Customer newCustomer= customerOption.get();
+		
+				Customer oldCustomer=newCustomer.clone();
+			
+			Audit audit=new Audit();
+			audit.setEventDate(new Date());
+			audit.setEventName(BankEnum.eventName.CUSTOMER.toString());
+			audit.setEventType(BankEnum.eventType.UPDATE.toString());
+			audit.setUserId(newCustomer.getUserId());
+			audit.setNewValue(newCustomer);
+			audit.setOldValue(oldCustomer);
+			
 			System.out.println(newCustomer);
 			newCustomer.setName(customerName);
-			
+			auditService.sendToAudit(audit);
 			return customerRepo.save(newCustomer);
 	}
 		else

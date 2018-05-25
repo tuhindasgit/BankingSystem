@@ -54,12 +54,21 @@ public class CustomerController {
 	@PutMapping(value="/{customerId}/{customerName}")
 	public ResponseEntity<?> updateCustomer(@PathVariable final Integer customerId,@PathVariable final String customerName) {
 		try {
-			final Customer customerRes = custService.updateCustomer(customerId, customerName);
+			Customer customerRes;
+			try {
+				customerRes = custService.updateCustomer(customerId, customerName);
+				return new ResponseEntity<Customer>(customerRes, HttpStatus.OK);
+			} catch (CloneNotSupportedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
 
-			return new ResponseEntity<Customer>(customerRes, HttpStatus.OK);
+			
 		} catch (MyException e) {
 
 			return new ResponseEntity<String>(e.toString(), HttpStatus.NOT_ACCEPTABLE);
 		}
+		
 	}
 }
