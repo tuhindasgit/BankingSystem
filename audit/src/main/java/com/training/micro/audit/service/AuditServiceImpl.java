@@ -47,7 +47,7 @@ public class AuditServiceImpl implements AuditService {
 	 * All audit of a particular eventName
 	 */
 	@Override
-	public List<Audit> viewOneByEvent(String eventName) {
+	public List<Audit> viewOneByEvent(final String eventName) {
 		if(eventName==null)
 		{
 			throw new AuditException("pass a event name");
@@ -61,14 +61,14 @@ public class AuditServiceImpl implements AuditService {
 	 * updating a audit List of a particular event Name
 	 */
 	@Override
-	public String updateAudit(String eventName) {
-		List<Audit> auditOption= auditRepo.findByEventName(eventName);
+	public String updateAudit(final String eventName) {
+		final List<Audit> auditOption= auditRepo.findByEventName(eventName);
 		for(Audit list:auditOption)
 		{
 			list.setEventType("new created");
 			 auditRepo.save(list);
 			
-		}
+					}
 		return "updated";
 	}
 }
