@@ -9,12 +9,20 @@ import org.springframework.stereotype.Service;
 import com.training.micro.audit.document.Audit;
 import com.training.micro.audit.exception.AuditException;
 import com.training.micro.audit.repository.AuditRepo;
+/**
+ * @author tuhindas
+ *
+ */
 @Service
 public class AuditServiceImpl implements AuditService {
 
 	@Autowired
 	AuditRepo auditRepo;
-	
+
+	/**
+	 * implementation of audit service
+	 * creating a new audit
+	 */
 	@Override
 	public Audit createAudit(Audit audit) {
 		
@@ -27,11 +35,17 @@ public class AuditServiceImpl implements AuditService {
 			return auditRepo.save(audit);
 		}
 	}
+	/**
+	 * List of all audit
+	 */
 	@Override
 	public List<Audit> viewAudit() {
 		
 		return auditRepo.findAll();
 	}
+	/**
+	 * All audit of a particular eventName
+	 */
 	@Override
 	public List<Audit> viewOneByEvent(String eventName) {
 		if(eventName==null)
@@ -43,6 +57,9 @@ public class AuditServiceImpl implements AuditService {
 			return  auditRepo.findByEventName(eventName);
 	}
 	}
+	/**
+	 * updating a audit List of a particular event Name
+	 */
 	@Override
 	public String updateAudit(String eventName) {
 		List<Audit> auditOption= auditRepo.findByEventName(eventName);
@@ -50,6 +67,7 @@ public class AuditServiceImpl implements AuditService {
 		{
 			list.setEventType("new created");
 			 auditRepo.save(list);
+			
 		}
 		return "updated";
 	}

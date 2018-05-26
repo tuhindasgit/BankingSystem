@@ -6,6 +6,7 @@ package com.training.micro.audit.exception;
  */
 public class AuditException extends RuntimeException {
 	
+	private static final long serialVersionUID = -8550248949236138298L;
 	private String message;
 	
 	public AuditException(String message)
@@ -21,6 +22,4 @@ public class AuditException extends RuntimeException {
 	public String toString() {
 		return "AuditException [message=" + message + "]";
 	}
-
-	
 }

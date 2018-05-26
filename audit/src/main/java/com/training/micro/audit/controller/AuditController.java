@@ -16,12 +16,21 @@ import com.training.micro.audit.document.Audit;
 import com.training.micro.audit.exception.AuditException;
 import com.training.micro.audit.service.AuditService;
 
+/**
+ * @author tuhindas
+ * rest end points
+ */
 @RestController
 @RequestMapping(value="/audit")
 public class AuditController {
 	
 	@Autowired
 	AuditService auditservice;
+	/**
+	 * sending a audit object through JSON and saving it 
+	 * @param audit
+	 * @return ResponseEntity
+	 */
 	@PostMapping
 	public ResponseEntity<?> addAudit(@RequestBody final Audit audit) {
 		try
@@ -34,18 +43,32 @@ public class AuditController {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
 		}
 }
+	/**
+	 * viewing list of audits 
+	 * @return ResponseEntity
+	 */
 	@GetMapping
 	public ResponseEntity<?> viewAudit() {
 		List<Audit> auditResult=auditservice.viewAudit();
 		return new ResponseEntity<List<Audit>>(auditResult, HttpStatus.CREATED);
 
 }
+	/**
+	 * viewing a list of audits of aparticular eventname
+	 * @param eventName
+	 * @return
+	 */
 	@GetMapping(value="/{eventName}")
 	public ResponseEntity<?> viewOneAudit(@PathVariable final String eventName) {
 		List<Audit> auditResult=auditservice.viewOneByEvent(eventName);
 		return new ResponseEntity<List<Audit>>(auditResult, HttpStatus.CREATED);
 
 }
+	/**
+	 * updating list of audits of a particular event name type
+	 * @param eventName
+	 * @return
+	 */
 	@PostMapping(value="/{eventName}")
 	public ResponseEntity<?> updateAudit(@PathVariable final String eventName) {
 		String auditResult=auditservice.updateAudit(eventName);

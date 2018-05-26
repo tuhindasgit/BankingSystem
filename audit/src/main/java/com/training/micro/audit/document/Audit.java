@@ -1,6 +1,5 @@
 package com.training.micro.audit.document;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -9,6 +8,11 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * @author tuhindas
+ *
+ * @param <T>
+ */
 @Document
 public class Audit<T> {
 	
