@@ -46,7 +46,7 @@ public class ApplicationTests {
 	 * negative test case for bank creation
 	 * @throws BankException 
 	 */
-	@Test(expected=NullPointerException.class)
+	@Test(expected=BankException.class)
 	public void testBankF() throws BankException {
 		bank=new Bank();
 		bank.setAmount(new BigDecimal(-102));
