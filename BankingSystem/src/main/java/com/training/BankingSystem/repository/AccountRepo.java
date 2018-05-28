@@ -14,6 +14,6 @@ import com.training.BankingSystem.model.Customer;
  */
 public interface AccountRepo extends JpaRepository<Account, Integer> {
 
-	@Query("SELECT * FROM Account where accountId=?")
+	@Query(value="SELECT * FROM Account where accountId=?1",nativeQuery=true)
 	Optional<Account> findById(Integer id);
 }

@@ -14,6 +14,6 @@ import com.training.BankingSystem.model.Denomination;
  */
 public interface DenmRepo extends JpaRepository<Denomination, Integer> {
 
-	@Query("SELECT * FROM Denomination where denomination=?")
+	@Query(value="SELECT * FROM Denomination where denomination=?",nativeQuery=true)
 	Optional<Denomination> findById(Integer id);
 }

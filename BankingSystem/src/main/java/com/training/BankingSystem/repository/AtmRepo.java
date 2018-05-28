@@ -14,6 +14,6 @@ import com.training.BankingSystem.model.Bank;
  */
 public interface AtmRepo extends JpaRepository<ATM, Integer> {
 
-	@Query("SELECT * FROM ATM where ATMId=?")
+	@Query(value="SELECT * FROM ATM where ATMId=?1",nativeQuery=true)
 	Optional<ATM> findById(Integer id);
 }

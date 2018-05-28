@@ -13,6 +13,6 @@ import com.training.BankingSystem.model.Denomination;
  *
  */
 public interface BankDenmRepo extends JpaRepository<BankDenomination, Integer> {
-	@Query("SELECT * FROM Denomination where denomination=?")
+	@Query(value="SELECT * FROM Denomination where denomination=?1",nativeQuery=true)
 	Optional<BankDenomination> findById(Integer id);
 }

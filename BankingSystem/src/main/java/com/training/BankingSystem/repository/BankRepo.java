@@ -12,6 +12,6 @@ import com.training.BankingSystem.model.Bank;
  *
  */
 public interface BankRepo extends JpaRepository<Bank,Integer>{
-	@Query("SELECT * FROM BANK where bankId=?")
+	@Query(value="SELECT * FROM BANK where bankId=?1",nativeQuery=true)
 	Optional<Bank> findById(Integer id);
 }

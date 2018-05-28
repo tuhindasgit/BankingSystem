@@ -69,6 +69,11 @@ public class Bank {
 	public String toString() {
 		return "Bank [bankId=" + bankId + ", amount=" + amount + "]";
 	}
+	public Bank(Integer bankId, BigDecimal amount) {
+		super();
+		this.bankId = bankId;
+		this.amount = amount;
+	}
 	
 
 }

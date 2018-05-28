@@ -14,6 +14,6 @@ import com.training.BankingSystem.model.Customer;
  */
 public interface CustomerRepo extends JpaRepository<Customer, Integer>{
 
-	@Query("SELECT * FROM Customer where customerId=?")
+	@Query(value="SELECT * FROM Customer where customerId=?1",nativeQuery=true)
 	Optional<Customer> findById(Integer id);
 }

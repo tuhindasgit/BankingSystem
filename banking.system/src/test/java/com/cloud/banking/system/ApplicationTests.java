@@ -6,12 +6,14 @@ import static org.mockito.Mockito.when;
 import java.math.BigDecimal;
 import java.util.Optional;
 
+import org.aspectj.lang.annotation.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.env.Environment;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.cloud.banking.system.exception.BankException;
@@ -27,8 +29,14 @@ public class ApplicationTests {
 	BankRepo bankRepo;
 	@InjectMocks
 	private BankServiceImpl bankserviceimpl;
+	@Mock
+	private Environment env;
 	
 	private Bank bank;
+	@org.junit.Before
+	public void beforeTest() {
+		bank=new Bank();
+	}
 	/**
 	 * positive test case for creating bank
 	 * @throws BankException 
@@ -36,7 +44,6 @@ public class ApplicationTests {
 	@Test
 	public void testBankP() throws BankException
 	{
-		bank=new Bank();
 		bank.setBankId(5);
 		bank.setAmount(new BigDecimal(102));
 		when(bankRepo.save(Mockito.<Bank>any())).thenReturn(bank);
@@ -48,10 +55,10 @@ public class ApplicationTests {
 	 */
 	@Test(expected=BankException.class)
 	public void testBankF() throws BankException {
-		bank=new Bank();
 		bank.setAmount(new BigDecimal(-102));
 		bank.setBankId(5);
 		System.out.println(bank);
+		when(env.getProperty(Mockito.anyString())).thenReturn("BankInvalidData");
 		bankserviceimpl.createBank(bank);
 		
 	}
@@ -74,17 +81,12 @@ public class ApplicationTests {
 	 * negative test case for finding by bankId
 	 * @throws BankException 
 	 */
-	@Test(expected=NullPointerException.class)
+	@Test(expected=BankException.class)
 	public void testFindByBankIdF() throws BankException {
-		bank=new Bank();
-		bank.setAmount(new BigDecimal(102));
-		bank.setBankId(5);
-		
 		Optional<Bank> opBank=Optional.empty();
-	
-		when(bankRepo.findByBankId(5)).thenReturn(opBank);
-		System.out.println(">>>>>>>>>" +opBank);
-		bankserviceimpl.findBankById(5);
+		when(bankRepo.findByBankId(8)).thenReturn(opBank);
+		when(env.getProperty(Mockito.anyString())).thenReturn("BankId");
+		bankserviceimpl.findBankById(8);
 		
 	}
 	
