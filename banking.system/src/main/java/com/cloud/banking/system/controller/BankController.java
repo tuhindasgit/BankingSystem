@@ -26,7 +26,7 @@ import com.cloud.banking.system.service.BankServiceImpl;
 public class BankController {
 	@Autowired
 	BankServiceImpl bankService;
-	/*
+	/**
 	 * Rest end point for adding a bank
 	 */
 	@PostMapping
@@ -39,7 +39,7 @@ public class BankController {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
-	/*
+	/**
 	 * Rest end point for viewing a bank
 	 */
 	@GetMapping(value ="/{bankId}")

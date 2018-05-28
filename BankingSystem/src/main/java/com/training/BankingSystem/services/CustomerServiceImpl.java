@@ -23,9 +23,13 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	@Autowired
 	BankService bankservice;
+
+//	@Autowired
+//	eurekaController controller;
 	
 	@Autowired
-	AuditService auditService;
+	AuditService auditt;
+	
 
 	/**
 	 * 
@@ -51,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService{
  */
 	@Override
 	public Customer getCustomerDetails(final Integer customerId) {
-		final Optional<Customer> customerOption = customerRepo.findById(customerId);
+		final Optional<Customer> customerOption = customerRepo.findByCustomerId(customerId);
 		if(customerOption.isPresent())
 		{
 		
@@ -67,7 +71,7 @@ public class CustomerServiceImpl implements CustomerService{
 	public Customer updateCustomer(Integer customerId, String customerName) throws CloneNotSupportedException {
 	
 	
-		final Optional<Customer> customerOption = customerRepo.findById(customerId);
+		final Optional<Customer> customerOption = customerRepo.findByCustomerId(customerId);
 
 		if(customerOption.isPresent())
 		{
@@ -86,7 +90,9 @@ public class CustomerServiceImpl implements CustomerService{
 			
 			System.out.println(newCustomer);
 			newCustomer.setName(customerName);
-			auditService.sendToAudit(audit);
+		
+			Audit auditRes=auditt.createAudit(audit);
+			//controller.eurekaConnect(audit);
 			return customerRepo.save(newCustomer);
 	}
 		else

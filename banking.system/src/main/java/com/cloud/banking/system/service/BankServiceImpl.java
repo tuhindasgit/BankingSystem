@@ -66,6 +66,9 @@ public class BankServiceImpl implements BankService {
 		}
 	}
 
+	/**
+	 * method to check for a customer is present or not
+	 */
 	@Override
 	public Optional<Bank> findById(Integer bankId) throws BankException {
 		

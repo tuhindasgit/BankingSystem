@@ -1,18 +1,14 @@
 package com.training.BankingSystem.services;
 
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.training.BankingSystem.helper.Audit;
-import com.training.BankingSystem.model.Customer;
-@Service
-public class AuditService {
 
-	public Audit sendToAudit(Audit audit)
-	{
-	    final String uri = "http://localhost:8080/audit";
-	    RestTemplate restTemplate = new RestTemplate();
-	    Audit result = restTemplate.postForObject( uri, audit, Audit.class);
-	    return result;
-	}
+@FeignClient("audit")
+public interface AuditService {
+
+	@PostMapping(path="/audit")
+	Audit createAudit(Audit audit);
 }

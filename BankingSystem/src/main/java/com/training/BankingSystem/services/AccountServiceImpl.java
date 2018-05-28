@@ -44,8 +44,8 @@ public class AccountServiceImpl implements AccountService {
 	public Account createAccount(final Account account) {
 		final Integer customerId = account.getCustomerId();
 		final Integer bankId = account.getBankId();
-		final Optional<Bank> bank1 = bankRepo.findById(bankId);
-		final Optional<Customer> customer1 = custRepo.findById(customerId);
+		final Optional<Bank> bank1 = bankRepo.findByBankId(bankId);
+		final Optional<Customer> customer1 = custRepo.findByCustomerId(customerId);
 		if (bank1.isPresent() && customer1.isPresent()) {
 			if (bank1.get().getBankId() == customer1.get().getBankId()) {
 				final Account account1 = accountRepo.save(account);
@@ -92,7 +92,7 @@ public class AccountServiceImpl implements AccountService {
 			if(customerId==customerId1)
 			{
 			if (select.equals("bank"))  {
-				final Optional<Bank> opBank1 = bankRepo.findById(bankId);
+				final Optional<Bank> opBank1 = bankRepo.findByBankId(bankId);
 
 				if (opBank1.isPresent()) {
 					final Bank bank1 = opBank1.get();
@@ -167,7 +167,7 @@ public class AccountServiceImpl implements AccountService {
 		if (account2.isPresent()) {
 			final Account acnt2 = account2.get();
 			final Integer bankId = acnt2.getBankId();
-			final Optional<Bank> opBank2 = bankRepo.findById(bankId);
+			final Optional<Bank> opBank2 = bankRepo.findByBankId(bankId);
 			if (opBank2.isPresent()) {
 				final Bank bank2 = opBank2.get();
 

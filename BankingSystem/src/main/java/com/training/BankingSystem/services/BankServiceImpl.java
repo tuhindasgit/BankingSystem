@@ -41,7 +41,7 @@ public class BankServiceImpl implements BankService {
   */
 	@Override
 	public Bank getBankDetails(final Integer bankId) {
-		final Optional<Bank> bank = bankRepo.findById(bankId);
+		final Optional<Bank> bank = bankRepo.findByBankId(bankId);
 		if(bank.isPresent())
 		{
 			log.info("customer Details:  " +bank.get());
@@ -58,6 +58,6 @@ public class BankServiceImpl implements BankService {
 	@Override
 	public Optional<Bank> findById(Integer bankId) {
 		
-		return bankRepo.findById(bankId);
+		return bankRepo.findByBankId(bankId);
 	}
 }

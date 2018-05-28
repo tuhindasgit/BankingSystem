@@ -30,7 +30,9 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	@Autowired
 	Environment env;
-	
+	/**
+	 * Customer Service for Creating a customer
+	 */
 	@Override
 	public Customer createCustomer(Customer customer) throws BankException {
 		final Integer id=customer.getBankId();
@@ -44,16 +46,56 @@ public class CustomerServiceImpl implements CustomerService{
 		}
 	}
 
+	/**
+	 * finding a specific customer finding by customer Id
+	 */
 	@Override
 	public Customer getCustomerDetails(Integer customerId) throws BankException {
-		// TODO Auto-generated method stub
-		return null;
+		final Optional<Customer> customerOption = customerRepo.findByCustomerId(customerId);
+		if(customerOption.isPresent())
+		{
+		
+			return customerOption.get();
+		}
+		else
+		{
+			throw new BankException(env.getProperty("CustomerId"));
+		}
 	}
+	
 
+	/**
+	 * updating a customer name with customer id provided
+	 */
 	@Override
 	public Customer updateCustomer(Integer customerId, String customerName) throws BankException {
-		// TODO Auto-generated method stub
-		return null;
+		final Optional<Customer> customerOption = customerRepo.findByCustomerId(customerId);
+
+		if(customerOption.isPresent())
+		{
+			
+			Customer customer= customerOption.get();
+		
+				//Customer oldCustomer=newCustomer.clone();
+			
+//			Audit audit=new Audit();
+//			audit.setEventDate(new Date());
+//			audit.setEventName(BankEnum.eventName.CUSTOMER.toString());
+//			audit.setEventType(BankEnum.eventType.UPDATE.toString());
+//			audit.setUserId(newCustomer.getUserId());
+//			audit.setNewValue(newCustomer);
+//			audit.setOldValue(oldCustomer);
+			
+			
+			customer.setName(customerName);
+		
+			//controller.eurekaConnect(audit);
+			return customerRepo.save(customer);
+	}
+		else
+			{
+			throw new BankException(env.getProperty("CustomerUpdate"));
+			}}
 	}
 
-}
+
