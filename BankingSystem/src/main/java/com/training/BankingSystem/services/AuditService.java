@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.training.BankingSystem.helper.Audit;
 
-@FeignClient("audit")
+@FeignClient("zuul")
 public interface AuditService {
 
-	@PostMapping(path="/audit")
+	@PostMapping(path="dit/audit")
 	Audit createAudit(Audit audit);
 }
