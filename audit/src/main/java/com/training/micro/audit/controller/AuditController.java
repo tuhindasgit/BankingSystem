@@ -3,6 +3,8 @@ package com.training.micro.audit.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +22,15 @@ import com.training.micro.audit.service.AuditService;
  * @author tuhindas
  * rest end points
  */
+@RefreshScope
 @RestController
 @RequestMapping(value="/audit")
 public class AuditController {
 	
 	@Autowired
 	AuditService auditservice;
+	@Value("${hi:hello}")
+	String hi;
 	/**
 	 * sending a audit object through JSON and saving it 
 	 * @param audit
@@ -44,14 +49,26 @@ public class AuditController {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
 		}
 }
+	
+	
+	@GetMapping
+	public ResponseEntity<?> viewAudit() {
+		List<Audit> auditResult=auditservice.viewAudit();
+		//return new ResponseEntity<List<Audit>>(auditResult, HttpStatus.CREATED);
+		return new ResponseEntity<String>(hi, HttpStatus.CREATED);
+
+}
+	
+	
 	/**
 	 * viewing list of audits 
 	 * @return ResponseEntity
 	 */
-	@GetMapping
-	public ResponseEntity<?> viewAudit() {
+	@GetMapping(value="/hi")
+	public ResponseEntity<?> viewhiAudit() {
 		List<Audit> auditResult=auditservice.viewAudit();
-		return new ResponseEntity<List<Audit>>(auditResult, HttpStatus.CREATED);
+		return new ResponseEntity<String>(hi, HttpStatus.CREATED);
+
 
 }
 	/**
