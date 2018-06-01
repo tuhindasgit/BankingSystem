@@ -54,8 +54,8 @@ public class AuditController {
 	@GetMapping
 	public ResponseEntity<?> viewAudit() {
 		List<Audit> auditResult=auditservice.viewAudit();
-		//return new ResponseEntity<List<Audit>>(auditResult, HttpStatus.CREATED);
-		return new ResponseEntity<String>(hi, HttpStatus.CREATED);
+		return new ResponseEntity<List<Audit>>(auditResult, HttpStatus.CREATED);
+
 
 }
 	
