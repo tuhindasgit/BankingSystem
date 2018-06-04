@@ -35,6 +35,7 @@ public class Bank {
 	 */
 	public void setBankId(final Integer bankId) {
 		this.bankId = bankId;
+		
 	}
 	/**
 	 * @return the amount
