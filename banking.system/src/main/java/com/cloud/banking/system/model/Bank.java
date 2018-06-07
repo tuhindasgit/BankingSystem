@@ -1,5 +1,6 @@
 package com.cloud.banking.system.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import javax.persistence.OneToMany;
  * bank POJO
  */
 @Entity
-public class Bank {
+public class Bank implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer bankId;

@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -52,8 +53,10 @@ public class BankServiceImpl implements BankService {
 	 * @param bankId
 	 * @return Bank Object
 	  */
+	@Cacheable(value="userCache",key="#bankId")//userCache name of cache created in ehcache.xml 
 	@Override
 	public Bank findBankById(Integer bankId) throws BankException{
+		System.out.println("In Service method");
 		final Optional<Bank> bank = bankRepo.findByBankId(bankId);
 		if(bank.isPresent())
 		{
