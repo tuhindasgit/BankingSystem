@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.training.BankingSystem.exception.MyException;
+import com.training.BankingSystem.helper.Audit;
 import com.training.BankingSystem.model.Customer;
 import com.training.BankingSystem.services.CustomerServiceImpl;
+import com.training.BankingSystem.services.eurekaController;
 /*
  * Rest Controller for Customer Service
  */
@@ -23,6 +25,10 @@ public class CustomerController {
 
 	@Autowired
 	CustomerServiceImpl custService;
+	@Autowired
+	eurekaController cntrl;
+	@Autowired
+	Audit audit;
 /*
  * Rest end point for adding customer	
  */
@@ -70,5 +76,16 @@ public class CustomerController {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.NOT_ACCEPTABLE);
 		}
 		
+	}
+	@GetMapping(value = "/edit")
+	public ResponseEntity<?> hystrixcontrol(@PathVariable("customerId") final Integer customerId) {
+		try {
+			final String customerRes = cntrl.eurekaConnect();
+
+			return new ResponseEntity<String>(customerRes, HttpStatus.OK);
+		} catch (MyException e) {
+
+			return new ResponseEntity<String>(e.toString(), HttpStatus.NOT_ACCEPTABLE);
+		}
 	}
 }

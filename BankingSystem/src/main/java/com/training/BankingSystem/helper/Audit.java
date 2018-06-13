@@ -2,6 +2,9 @@ package com.training.BankingSystem.helper;
 
 import java.util.Date;
 import java.util.UUID;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 /**
  * 
  * @author trainee
@@ -10,6 +13,7 @@ import java.util.UUID;
  */
 
 public class Audit<T> {
+
 
 	private UUID eventId=UUID.randomUUID();
 	private String eventName;
@@ -129,6 +133,6 @@ public class Audit<T> {
 	public Audit() {
 		super();
 	}
-	
+
 
 }

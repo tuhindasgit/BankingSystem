@@ -9,6 +9,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class BaseEntity {
 
+	
 	private String userId;
 	/**
 	 * @return the userId

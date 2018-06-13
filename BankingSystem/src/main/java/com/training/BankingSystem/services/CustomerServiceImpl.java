@@ -24,8 +24,8 @@ public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	BankService bankservice;
 
-//	@Autowired
-//	eurekaController controller;
+	@Autowired
+	eurekaController controller;
 	
 	@Autowired
 	AuditService auditt;
@@ -91,7 +91,7 @@ public class CustomerServiceImpl implements CustomerService{
 			System.out.println(newCustomer);
 			newCustomer.setName(customerName);
 		
-			Audit auditRes=auditt.createAudit(audit);
+			//Audit auditRes=auditt.createAudit(audit);
 			//controller.eurekaConnect(audit);
 			return customerRepo.save(newCustomer);
 	}
@@ -99,6 +99,8 @@ public class CustomerServiceImpl implements CustomerService{
 			{
 			throw new MyException("not updated");
 			}}
-	}
 
+
+
+}
 
